@@ -1,25 +1,28 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { Route, Switch } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import MyCollections from './components/MyCollections';
+import MyFavorites from './components/MyFavorites';
+import PublicCollections from './components/PublicCollections';
+import UploadCollection from './components/forms/UploadCollection';
+import UploadRecipe from './components/forms/UploadRecipe';
+import RecipePage from './components/RecipePage';
+import CollectionPage from './components/RecipePage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>HELLO WORLD! </h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+          <Route exact path="/"><LandingPage/></Route>
+          <Route path="/mycollections"><MyCollections/></Route>
+          <Route path="/myfavorites"><MyFavorites/></Route>
+          <Route path="/publiccollections"><PublicCollections/></Route>
+          <Route path="/uploadollection"><UploadCollection/></Route>
+          <Route path="/uploadrecipe"><UploadRecipe/></Route>
+          <Route path="/recipe/:id"><RecipePage/></Route>
+          <Route path="/collection/:id"><CollectionPage/></Route>
+      </Switch>
     </div>
   );
 }
