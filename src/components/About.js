@@ -2,7 +2,7 @@ import React from 'react';
 import LandingAboutNav from './navbars/LandingAboutNav';
 import LandingAboutFooter from './LandingAboutFooter';
 
-const LandingPage = () => {
+const About = () => {
     return (
         <div>
             <LandingAboutNav/>
@@ -11,4 +11,4 @@ const LandingPage = () => {
     );
 };
 
-export default LandingPage;
+export default About;
