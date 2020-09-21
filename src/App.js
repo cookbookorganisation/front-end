@@ -10,6 +10,8 @@ import UploadCollection from './components/forms/UploadCollection';
 import UploadRecipe from './components/forms/UploadRecipe';
 import RecipePage from './components/RecipePage';
 import CollectionPage from './components/RecipePage';
+import SignUp from './components/forms/SignUp';
+import LogIn from './components/forms/LogIn';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/uploadrecipe"><UploadRecipe/></Route>
           <Route path="/recipe/:id"><RecipePage/></Route>
           <Route path="/collection/:id"><CollectionPage/></Route>
+          <Route path="/signup"><SignUp/></Route>
+          <Route path="/login"><LogIn/></Route>
       </Switch>
     </div>
   );
