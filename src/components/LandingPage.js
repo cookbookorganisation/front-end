@@ -7,6 +7,7 @@ const LandingPage = () => {
         <div>
             <LandingAboutNav/>
             <LandingAboutFooter/>
+            Landing Page
         </div>
     );
 };
