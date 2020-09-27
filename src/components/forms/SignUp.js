@@ -1,20 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
-import { Avatar, Button, Link, Grid, CssBaseline, TextField, Box, Typography, Container, makeStyles } from "@material-ui/core";
+import { Avatar, Button, Grid, CssBaseline, TextField, Box, Typography, Container, makeStyles } from "@material-ui/core";
+import Copyright from '../Copyright';
+import { signup } from '../actions/SignUp';
+import { connect } from 'react-redux';
+
 // import SVG JS component
 import CookBookIcon from "../../images/icons/cookBookIcon.js";
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {"Copyright © "}
-            <Link color="inherit" href="https://material-ui.com/">
-                CookBook Organisation
-            </Link>{" "}
-            {new Date().getFullYear()}{"."}
-        </Typography>
-    );
-};
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -61,22 +53,42 @@ const useStyles = makeStyles((theme) => ({
 const SignUp = () => {
     const classes = useStyles();
     const history = useHistory();
+    const [formValues, setFormValues] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
+    });
+
+    function handleChange(e) {
+        setFormValues({
+            ...formValues,
+            [e.target.name]: e.target.value
+        })
+    };
+
+    async function handleSubmit(e, props) {
+        e.preventDefault();
+        await props.signup(formValues)
+        history.push('/mycollections');
+    };
 
     return (
         <div className="formBackground">
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
-                    <div className={classes.paper}>
-                        <Avatar className={classes.avatar}>
-                            <CookBookIcon />
-                        </Avatar>
-                        <Typography component="h1" variant="h5" className={classes.title}>
-                            Sign up
-                        </Typography>
-                        <form className={classes.form} noValidate>
+                <div className={classes.paper}>
+                    <Avatar className={classes.avatar}>
+                        <CookBookIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5" className={classes.title}>
+                        Sign up
+                    </Typography>
+                    <form className={classes.form} noValidate>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    onChange={handleChange}
                                     autoComplete="fname"
                                     name="firstName"
                                     required
@@ -87,6 +99,7 @@ const SignUp = () => {
                             </Grid>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    onChange={handleChange}
                                     required
                                     fullWidth
                                     id="lastName"
@@ -96,15 +109,17 @@ const SignUp = () => {
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    onChange={handleChange}
                                     required
-                                        fullWidth
-                                        id="email"
-                                        label="Email"
-                                        name="email"
-                                        autoComplete="email"/>
+                                    fullWidth
+                                    id="email"
+                                    label="Email"
+                                    name="email"
+                                    autoComplete="email"/>
                             </Grid>
                             <Grid item xs={12}>
                                 <TextField
+                                    onChange={handleChange}
                                     required
                                     fullWidth
                                     name="password"
@@ -115,6 +130,7 @@ const SignUp = () => {
                             </Grid>
                         </Grid>
                         <Button
+                            onSubmit={handleSubmit}
                             type="submit"
                             variant="contained"
                             color="primary"
@@ -138,4 +154,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default connect(null, { signup })(SignUp);
