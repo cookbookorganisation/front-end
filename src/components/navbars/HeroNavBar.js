@@ -1,10 +1,12 @@
 import React from 'react';
+import { makeStyles, Container, CssBaseline, Typography, Grid, TextField } from "@material-ui/core";
 
 const HeroNavBar = () => {
     return (
-        <div>
-            
-        </div>
+        <Container maxWidth="sm">
+            {/* <CssBaseline/> */}
+            container
+        </Container>
     );
 };
 

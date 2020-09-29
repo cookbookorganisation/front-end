@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.formBackground {
+    background: url('./images/background.png');
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+}
