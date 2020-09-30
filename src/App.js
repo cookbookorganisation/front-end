@@ -23,7 +23,7 @@ function App() {
                 <Route path="/mycollections"><MyCollections/></Route>
                 <Route path="/myfavorites"><MyFavorites/></Route>
                 <Route path="/publiccollections"><PublicCollections/></Route>
-                <Route path="/uploadollection"><UploadCollection/></Route>
+                <Route path="/uploadcollection"><UploadCollection/></Route>
                 <Route path="/uploadrecipe"><UploadRecipe/></Route>
                 <Route path="/recipe/:id"><RecipePage/></Route>
                 <Route path="/collection/:id"><CollectionPage/></Route>
