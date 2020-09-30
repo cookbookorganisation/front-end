@@ -116,7 +116,7 @@ const LogIn = () => {
                         </Button>
                         <Grid container justify="flex-end">
                             <Grid item>
-                                <p onClick={()=>history.push('/signup')} variant="body2" style={{ color: "#590E07" }}>
+                                <p onClick={()=>history.push('/signup')} variant="body2" style={{ color: "#590E07", cursor: "pointer" }}>
                                     Don't have an account? Sign up
                                 </p>
                             </Grid>

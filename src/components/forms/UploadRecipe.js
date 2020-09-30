@@ -1,9 +1,11 @@
 import React from 'react';
+import GoHomeIcon from '../GoHomeIcon';
 
 const UploadRecipe = () => {
     return (
-        <div>
-            
+        <div className="formBackground">
+            <GoHomeIcon/>
+            Upload recipe
         </div>
     );
 };
