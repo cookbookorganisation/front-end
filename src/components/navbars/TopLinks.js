@@ -5,7 +5,9 @@ import { makeStyles, Grid, Container } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     links: {
         textDecoration: "none",
-        fontSize: "1.1rem",
+        fontSize: "1.0rem",
+        fontFamily: "Montserrat",
+        fontWeight: "700",
     }
 }));
 

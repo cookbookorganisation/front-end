@@ -75,7 +75,7 @@ const SignUp = () => {
 
     return (
         <div className="formBackground">
-            <Container component="main" maxWidth="xs">
+            <Container component="main" maxWidth="sm">
                 <CssBaseline />
                 <div className={classes.paper}>
                     <Avatar className={classes.avatar}>
