@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         height: "75px",
         width: "75px",
-        margin: theme.spacing(12),
         background: "white",
         "&:hover": {
             backgroundColor: "white",
