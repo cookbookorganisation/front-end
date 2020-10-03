@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
 
-const UploadCollection_name = ({ collectionData, setCollectionData, handleCancel }) => {
+const UploadRecipe_temperature = ({ handleCancel, setRecipeData, recipeData }) => {
     const useStyles = makeStyles((theme) => ({
         paper: {
             marginTop: theme.spacing(5),
@@ -24,13 +24,13 @@ const UploadCollection_name = ({ collectionData, setCollectionData, handleCancel
 
     return (
         <Container component="main" maxWidth="md">
-            <div 
+            <C 
             onClick={handleCancel}
             style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%" }}>
                 <GoHomeIcon/>
-            </div>
+            </C>
         </Container>
     );
 };
 
-export default UploadCollection_name;
+export default UploadRecipe_temperature;

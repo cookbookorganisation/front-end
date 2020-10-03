@@ -3,17 +3,16 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
 
-const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) => {
+const UploadRecipe_directions = ({ handleCancel, setRecipeData, recipeData }) => {
     return (
         <Container component="main" maxWidth="md">
-            testing  - description
-            <div 
+            <C 
             onClick={handleCancel}
             style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%" }}>
                 <GoHomeIcon/>
-            </div>
+            </C>
         </Container>
     );
 };
 
-export default UploadRecipe_description;
+export default UploadRecipe_directions;

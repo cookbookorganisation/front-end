@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
 
-const UploadCollection_name = ({ collectionData, setCollectionData, handleCancel }) => {
+const UploadRecipe_photo = ({ handleCancel, setRecipeData, recipeData }) => {
     const useStyles = makeStyles((theme) => ({
         paper: {
             marginTop: theme.spacing(5),
@@ -33,4 +33,4 @@ const UploadCollection_name = ({ collectionData, setCollectionData, handleCancel
     );
 };
 
-export default UploadCollection_name;
+export default UploadRecipe_photo;
