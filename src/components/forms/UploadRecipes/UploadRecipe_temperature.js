@@ -24,11 +24,11 @@ const UploadRecipe_temperature = ({ handleCancel, setRecipeData, recipeData }) =
 
     return (
         <Container component="main" maxWidth="md">
-            <C 
+            <div
             onClick={handleCancel}
             style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%" }}>
                 <GoHomeIcon/>
-            </C>
+            </div>
         </Container>
     );
 };
