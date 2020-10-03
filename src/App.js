@@ -6,29 +6,28 @@ import About from './components/About';
 import MyCollections from './components/MyCollections';
 import MyFavorites from './components/MyFavorites';
 import PublicCollections from './components/PublicCollections';
-import UploadCollection from './components/forms/UploadCollection';
-import UploadRecipe from './components/forms/UploadRecipe';
+import UploadCollection from './components/forms/UploadCollections/UploadCollection';
+import UploadRecipe from './components/forms/UploadRecipes/UploadRecipe';
 import RecipePage from './components/RecipePage';
 import CollectionPage from './components/RecipePage';
 import SignUp from './components/forms/SignUp';
 import LogIn from './components/forms/LogIn';
 
-
 function App() {
     return (
         <div className="App">
             <Switch>
-                <Route exact path="/"><LandingPage/></Route>
-                <Route path="/about"><About/></Route>
-                <Route path="/mycollections"><MyCollections/></Route>
-                <Route path="/myfavorites"><MyFavorites/></Route>
-                <Route path="/publiccollections"><PublicCollections/></Route>
-                <Route path="/uploadcollection"><UploadCollection/></Route>
-                <Route path="/uploadrecipe"><UploadRecipe/></Route>
-                <Route path="/recipe/:id"><RecipePage/></Route>
-                <Route path="/collection/:id"><CollectionPage/></Route>
-                <Route path="/signup"><SignUp/></Route>
-                <Route path="/login"><LogIn/></Route>
+                <Route exact path="/" component={LandingPage}/>
+                <Route path="/about" component={About}/>
+                <Route path="/mycollections" component={MyCollections}/>
+                <Route path="/myfavorites" component={MyFavorites}/>
+                <Route path="/publiccollections" component={PublicCollections}/>
+                <Route path="/uploadcollection/" component={UploadCollection}/>
+                <Route path="/uploadrecipe/" component={UploadRecipe}/>
+                <Route path="/recipe/:id" component={RecipePage}/>
+                <Route path="/collection/:id" component={CollectionPage}/>
+                <Route path="/signup" component={SignUp}/>
+                <Route path="/login" component={LogIn}/>
             </Switch>
         </div>
     );

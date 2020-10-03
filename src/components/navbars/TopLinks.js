@@ -15,7 +15,7 @@ const TopLinks = () => {
     const classes = useStyles();
     const match = useRouteMatch();
 
-    const urls = ['/mycollections', '/myfavorites', '/publiccollections', '/uploadcollection', '/uploadrecipe'];
+    const urls = ['/mycollections', '/myfavorites', '/publiccollections', '/uploadcollection/name', '/uploadrecipe/name'];
 
     function selectColor(num){
         return match.url === urls[num] ? "#D96704" : "#898989"
