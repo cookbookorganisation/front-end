@@ -25,6 +25,18 @@ const UploadRecipe_temperature = ({ handleCancel, setRecipeData, recipeData }) =
     const history = useHistory();
     const classes = useStyles();
 
+    function handleChange(e) {
+        e.preventDefault();
+        setRecipeData({
+            ...recipeData,
+            temperature: e.target.value 
+        })
+    };
+
+    function handleNext(e) {
+        history.push('/uploadrecipe/ingredients')
+    };
+
     return (
         <Container component="main" maxWidth="md">
             <div
@@ -32,6 +44,52 @@ const UploadRecipe_temperature = ({ handleCancel, setRecipeData, recipeData }) =
             style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%" }}>
                 <GoHomeIcon/>
             </div>
+            
+            <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
+
+                <Grid item style={{ width: "40%" }}>
+                    <Typography component="h5" variant="h5">
+                        How hot?  
+                        <span role="img" label="emoji-silverware" style={{ marginLeft: "3%" }}>🤔</span>
+                    </Typography>
+                </Grid>
+
+                <Grid item style={{ width: "100%" }}>
+                    <TextField
+                    onChange={handleChange}
+                    required
+                    fullWidth
+                    id="temperature"
+                    label="Ex: 400 oF"
+                    name="name"
+                    value={recipeData.temperature}/>
+                </Grid>
+
+                <Grid item className={classes.buttons}>
+                    <Button 
+                    variant="contained" 
+                    color="primary" 
+                    style={{ 
+                        borderRadius: "2px",
+                        padding: "1% 18%",
+                    }}
+                    onClick={handleNext}>
+                        Next
+                    </Button>
+                    <Button 
+                    variant="outlined" 
+                    color="secondary"
+                    style={{ 
+                        borderRadius: "2px",
+                        padding: "1% 18%",
+                        marginLeft: "5%"
+                    }}
+                    onClick={handleCancel}
+                    >
+                        Cancel
+                    </Button>
+                </Grid>
+            </Grid>
         </Container>
     );
 };

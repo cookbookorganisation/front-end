@@ -26,6 +26,7 @@ const UploadRecipe = ({ handleCancel, recipeData, setRecipeData }) => {
     const classes = useStyles();
 
     function handleChange(e) {
+        e.preventDefault();
         setRecipeData({
             ...recipeData,
             name: e.target.value 
@@ -57,10 +58,10 @@ const UploadRecipe = ({ handleCancel, recipeData, setRecipeData }) => {
                     onChange={handleChange}
                     required
                     fullWidth
-                    id="email"
+                    id="name"
                     label="Ex: NANA'S CHOCOLATE CAKE"
                     name="name"
-                    // value={recipeData.name}
+                    value={recipeData.name}
                     />
                 </Grid>
 

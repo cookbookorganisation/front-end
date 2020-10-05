@@ -17,24 +17,27 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row",
         alignSelf: "flex-end",
+        justifyContent: "flex-end",
         margin: theme.spacing(3),
+        width: "80%"
     },
 }));
 
-const UploadRecipe_servings = ({ handleCancel, setRecipeData, recipeData }) => {
+const UploadRecipe_oven = ({ handleCancel, setRecipeData, recipeData }) => {
     const history = useHistory();
     const classes = useStyles();
- 
-    function handleChange(e) {
+
+    function handleYes(e) {
         e.preventDefault();
         setRecipeData({
             ...recipeData,
-            servings: e.target.value 
-        })
+            oven: true 
+        });
+        history.push('/uploadrecipe/temperature')
     };
 
-    function handleNext(e) {
-        history.push('/uploadrecipe/oven')
+    function handleNo(e) {
+        history.push('/uploadrecipe/ingredients');
     };
 
     return (
@@ -48,22 +51,22 @@ const UploadRecipe_servings = ({ handleCancel, setRecipeData, recipeData }) => {
             <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
                 <Grid item style={{ width: "40%" }}>
                     <Typography component="h5" variant="h5">
-                        How many servings does this recipe make?
-                        <span role="img" label="emoji-silverware" style={{ marginLeft: "3%" }}>🍪</span>
+                        Do you need to pre-heat an oven?
+                        <span role="img" label="emoji-silverware" style={{ marginLeft: "3%" }}>🔥</span>
                     </Typography>
                 </Grid>
 
-                <Grid item style={{ width: "100%" }}>
+                {/* <Grid item style={{ width: "100%" }}>
                     <TextField
                     onChange={handleChange}
                     required
                     fullWidth
-                    id="servings"
-                    label="Ex: 12-14 COOKIES"
+                    id="oven"
+                    label="Ex: NANA'S CHOCOLATE CAKE"
                     name="name"
                     value={recipeData.name}
                     />
-                </Grid>
+                </Grid> */}
 
                 <Grid item className={classes.buttons}>
                     <Button 
@@ -73,8 +76,19 @@ const UploadRecipe_servings = ({ handleCancel, setRecipeData, recipeData }) => {
                         borderRadius: "2px",
                         padding: "1% 18%",
                     }}
-                    onClick={handleNext}>
-                        Next
+                    onClick={handleYes}>
+                        Yes
+                    </Button>
+                    <Button
+                    variant="contained"
+                    color="default"
+                    style={{
+                        borderRadius: "2px",
+                        padding: "1% 18%",
+                        marginLeft: "3%"
+                    }}
+                    onClick={handleNo}>
+                        No
                     </Button>
                     <Button 
                     variant="outlined" 
@@ -94,4 +108,4 @@ const UploadRecipe_servings = ({ handleCancel, setRecipeData, recipeData }) => {
     );
 };
 
-export default UploadRecipe_servings;
+export default UploadRecipe_oven;

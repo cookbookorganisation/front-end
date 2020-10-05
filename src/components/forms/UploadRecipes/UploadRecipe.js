@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { useHistory, Route, Switch } from 'react-router-dom';
-import cuid from 'cuid';
 import UploadRecipe_name from './UploadRecipe_name';
 import UploadRecipe_description from './UploadRecipe_description';
 import UploadRecipe_directions from './UploadRecipe_directions';
 import UploadRecipe_ingredients from './UploadRecipe_ingredients';
 import UploadRecipe_pairings from './UploadRecipe_pairings';
 import UploadRecipe_photo from './UploadRecipe_photo';
-import UploadRecipe_preheat from './UploadRecipe_preheat';
 import UploadRecipe_servings from './UploadRecipe_servings';
 import UploadRecipe_temperature from './UploadRecipe_temperature';
 import UploadRecipe_tradeSecrets from './UploadRecipe_tradeSecrets';
-
+import UploadRecipe_oven from './UploadRecipe_oven';
 
 const UploadRecipe = () => {
     const history = useHistory();
@@ -23,7 +21,8 @@ const UploadRecipe = () => {
         temperature: "",
         description: "",
         tradeSecrets: "",
-        pairings: ""
+        pairings: "", 
+        servings: ""
     });
 
     function handleCancel(e) {
@@ -44,63 +43,72 @@ const UploadRecipe = () => {
         {
             path: "/uploadrecipe/name",
             component: UploadRecipe_name,
+            key: "name",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
         {
             path: "/uploadrecipe/description",
             component: UploadRecipe_description,
+            key: "description",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
         {
             path: "/uploadrecipe/directions",
             component: UploadRecipe_directions,
+            key: "directions",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
         {
             path: "/uploadrecipe/ingredients",
             component: UploadRecipe_ingredients,
+            key: "ingredients",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
         {
             path: "/uploadrecipe/pairings",
             component: UploadRecipe_pairings,
+            key: "pairings",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
         {
             path: "/uploadrecipe/photo",
             component: UploadRecipe_photo,
+            key: "photo",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
         {
-            path: "/uploadrecipe/preheat",
-            component: UploadRecipe_preheat,
+            path: "/uploadrecipe/oven",
+            component: UploadRecipe_oven,
+            key: "preheat",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
         {
             path: "/uploadrecipe/servings",
             component: UploadRecipe_servings,
+            key: "servings",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
         {
             path: "/uploadrecipe/temperature",
             component: UploadRecipe_temperature,
+            key: "temperature",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
         {
             path: "/uploadrecipe/tradesecrets",
             component: UploadRecipe_tradeSecrets,
+            key: "tradeSecrets",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
-
     ]
     
     return (
         <div className="formBackground">
             <Switch>
-                {routes.map(({ path, component: C, ...uniqueProps }) => (
+                {routes.map(({ path, key, component: C, ...uniqueProps }) => (
                     <Route 
                         path={path}
-                        key={cuid()}
+                        key={key}
                         render={(props) => 
                             <C 
                                 {...props} 
