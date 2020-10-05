@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
@@ -21,11 +21,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const UploadRecipe = ({ handleCancel, setRecipeData, recipeData }) => {
+const UploadRecipe = ({ handleCancel, recipeData, setRecipeData }) => {
     const history = useHistory();
     const classes = useStyles();
 
     function handleChange(e) {
+        e.preventDefault();
         setRecipeData({
             ...recipeData,
             name: e.target.value 
@@ -35,7 +36,7 @@ const UploadRecipe = ({ handleCancel, setRecipeData, recipeData }) => {
     function handleNext(e) {
         history.push('/uploadrecipe/description')
     };
-    
+
     return (
         <Container component="main" maxWidth="md">
             <div 
@@ -57,10 +58,10 @@ const UploadRecipe = ({ handleCancel, setRecipeData, recipeData }) => {
                     onChange={handleChange}
                     required
                     fullWidth
-                    id="email"
+                    id="name"
                     label="Ex: NANA'S CHOCOLATE CAKE"
                     name="name"
-                    // value={recipeData.name}
+                    value={recipeData.name}
                     />
                 </Grid>
 
@@ -83,7 +84,8 @@ const UploadRecipe = ({ handleCancel, setRecipeData, recipeData }) => {
                         padding: "1% 18%",
                         marginLeft: "5%"
                     }}
-                    onClick={handleCancel}>
+                    onClick={handleCancel}
+                    >
                         Cancel
                     </Button>
                 </Grid>
