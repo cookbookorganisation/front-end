@@ -13,13 +13,19 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "5px",
         height: "50%",
     },
+    header: {
+        display: "flex", 
+        justifyContent: "flex-start", 
+        fontSize: "2.0rem",
+        fontWeight: 300
+    },
     buttons: {
         display: "flex",
         flexDirection: "row",
         alignSelf: "flex-end",
         justifyContent: "flex-end",
-        margin: theme.spacing(3),
-        width: "80%"
+        margin: theme.spacing(3, 0, 3, 3),
+        width: "60%"
     },
 }));
 
@@ -57,12 +63,12 @@ const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) =
             </div>
 
             <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
-                <Grid item style={{ width: "40%" }}>
-                    <Typography component="h5" variant="h5">
-                        What is your recipe called? 
-                        <span role="img" label="emoji-silverware" style={{ marginLeft: "3%" }}>😃</span>
+                <Grid item style={{ width: "100%" }}>
+                    <Typography component="h5" variant="h5" className={classes.header}>
+                        Tell us a bit about the recipe!
+                        <span role="img" aria-label="emoji-silverware" style={{ marginLeft: "3%" }}>😃</span>
                     </Typography>
-                    <Typography component="h6" variant="h6">
+                    <Typography component="h6" variant="h6" style={{ color: "#22A7F0", fontWeight: 300, display: "flex", justifyContent: "flex-start" }}>
                         How is it meaningful to you? Who taught you the recipe? Where does it come from?
                     </Typography>
                 </Grid>
@@ -84,7 +90,7 @@ const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) =
                     color="primary" 
                     style={{
                         borderRadius: "2px",
-                        padding: "1% 11%",
+                        padding: "1% 18%",
                     }}
                     onClick={handleNext}>
                         Next
@@ -94,8 +100,8 @@ const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) =
                     color="default"
                     style={{
                         borderRadius: "2px",
-                        padding: "1% 11%",
-                        marginLeft: "3%"
+                        padding: "1% 18%",
+                        marginLeft: "5%"
                     }}
                     onClick={handleSkip}>
                         Skip
@@ -105,8 +111,8 @@ const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) =
                     color="secondary"
                     style={{ 
                         borderRadius: "2px",
-                        padding: "1% 11%",
-                        marginLeft: "3%"
+                        padding: "1% 18%",
+                        marginLeft: "5%"
                     }}
                     onClick={handleCancel}
                     >

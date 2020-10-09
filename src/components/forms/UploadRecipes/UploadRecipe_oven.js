@@ -13,13 +13,19 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "5px",
         height: "50%",
     },
+    header: {
+        display: "flex", 
+        justifyContent: "flex-start", 
+        fontSize: "2.0rem",
+        fontWeight: 300
+    },
     buttons: {
         display: "flex",
         flexDirection: "row",
         alignSelf: "flex-end",
         justifyContent: "flex-end",
-        margin: theme.spacing(3),
-        width: "80%"
+        margin: theme.spacing(3, 0, 3, 3),
+        width: "60%"
     },
 }));
 
@@ -49,10 +55,10 @@ const UploadRecipe_oven = ({ handleCancel, setRecipeData, recipeData }) => {
             </div>
 
             <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
-                <Grid item style={{ width: "40%" }}>
-                    <Typography component="h5" variant="h5">
+                <Grid item style={{ width: "100%" }}>
+                    <Typography component="h5" variant="h5" className={classes.header}>
                         Do you need to pre-heat an oven?
-                        <span role="img" label="emoji-silverware" style={{ marginLeft: "3%" }}>🔥</span>
+                        <span role="img" aria-label="emoji-silverware" style={{ marginLeft: "3%" }}>🔥</span>
                     </Typography>
                 </Grid>
 

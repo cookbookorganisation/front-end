@@ -13,11 +13,17 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "5px",
         height: "50%",
     },
+    header: {
+        display: "flex", 
+        justifyContent: "flex-start", 
+        fontSize: "2.0rem",
+        fontWeight: 300
+    },
     buttons: {
         display: "flex",
         flexDirection: "row",
         alignSelf: "flex-end",
-        margin: theme.spacing(3),
+        margin: theme.spacing(3, 0, 3, 3),
     },
 }));
 
@@ -46,14 +52,14 @@ const UploadRecipe = ({ handleCancel, recipeData, setRecipeData }) => {
             </div>
 
             <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
-                <Grid item style={{ width: "40%" }}>
-                    <Typography component="h5" variant="h5">
+                <Grid item style={{ width: "100%" }}>
+                    <Typography component="h5" variant="h5" className={classes.header}>
                         What is your recipe called?  
-                        <span role="img" label="emoji-silverware" style={{ marginLeft: "3%" }}>🍽</span>
+                        <span role="img" aria-label="emoji-silverware" style={{ marginLeft: "3%" }}>🍽</span>
                     </Typography>
                 </Grid>
 
-                <Grid item style={{ width: "100%" }}>
+                <Grid item style={{ width: "50%" }}>
                     <TextField
                     onChange={handleChange}
                     required
@@ -61,8 +67,7 @@ const UploadRecipe = ({ handleCancel, recipeData, setRecipeData }) => {
                     id="name"
                     label="Ex: NANA'S CHOCOLATE CAKE"
                     name="name"
-                    value={recipeData.name}
-                    />
+                    value={recipeData.name}/>
                 </Grid>
 
                 <Grid item className={classes.buttons}>

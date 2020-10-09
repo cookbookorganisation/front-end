@@ -13,11 +13,17 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "5px",
         height: "50%",
     },
+    header: {
+        display: "flex", 
+        justifyContent: "flex-start", 
+        fontSize: "2.0rem",
+        fontWeight: 300
+    },
     buttons: {
         display: "flex",
         flexDirection: "row",
         alignSelf: "flex-end",
-        margin: theme.spacing(3),
+        margin: theme.spacing(3, 0, 3, 3),
     },
 }));
 
@@ -45,10 +51,13 @@ const UploadRecipe_photo = ({ handleCancel, setRecipeData, recipeData }) => {
                 <GoHomeIcon/>
             </div>
             <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
-                <Grid item style={{ width: "40%" }}>
-                    <Typography component="h5" variant="h5">
-                        What does the final dish look like?<br/> Share a picture! 
-                        <span role="img" label="emoji-silverware" style={{ marginLeft: "3%" }}>📸</span>
+                <Grid item style={{ width: "100%" }}>
+                    <Typography component="h5" variant="h5" className={classes.header}>
+                        What does the final dish look like?  
+                    </Typography>
+                    <Typography component="h5" variant="h5" className={classes.header}>
+                        Share a picture!
+                        <span role="img" aria-label="emoji-silverware" style={{ marginLeft: "3%" }}>📸</span>
                     </Typography>
                 </Grid>
 
