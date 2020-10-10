@@ -26,6 +26,7 @@ const UploadRecipe = () => {
     });
 
     function handleCancel(e) {
+        e.preventDefault();
         setRecipeData({
             name: "",
             directions: "",
@@ -35,8 +36,8 @@ const UploadRecipe = () => {
             description: "",
             tradeSecrets: "",
             pairings: ""
-        })
-        history.push('/mycollections')
+        });
+        history.push('/mycollections');
     };
 
     const routes = [

@@ -47,7 +47,7 @@ const UploadRecipe_servings = ({ handleCancel, setRecipeData, recipeData }) => {
         <Container component="main" maxWidth="md">
             <div 
             onClick={handleCancel}
-            style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%" }}>
+            style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%", width: "8%" }}>
                 <GoHomeIcon/>
             </div>
 

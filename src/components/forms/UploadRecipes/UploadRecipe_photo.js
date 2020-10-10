@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, TextField, Grid, Avatar } from '@material-ui/core';
+import { makeStyles, Container, Typography, Button, Grid, Avatar } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
 import PublishRoundedIcon from '@material-ui/icons/PublishRounded';
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: "3px 3px 8px #888888",
         backgroundColor: "#f8f8ff",
         borderRadius: "5px",
-        height: "70%",
+        height: "75%",
     },
     header: {
         display: "flex", 
@@ -65,7 +65,7 @@ const UploadRecipe_photo = ({ handleCancel, setRecipeData, recipeData }) => {
         <Container component="main" maxWidth="md">
             <div 
             onClick={handleCancel}
-            style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%" }}>
+            style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%", width: "8%" }}>
                 <GoHomeIcon/>
             </div>
             <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
@@ -123,13 +123,12 @@ const UploadRecipe_photo = ({ handleCancel, setRecipeData, recipeData }) => {
                     <Button 
                     variant="outlined" 
                     color="secondary"
+                    onClick={handleCancel}
                     style={{ 
                         borderRadius: "2px",
                         padding: "1% 18%",
                         marginLeft: "5%"
-                    }}
-                    onClick={handleCancel}
-                    >
+                    }}>
                         Cancel
                     </Button>
                 </Grid>
