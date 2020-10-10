@@ -8,36 +8,55 @@ const UploadCollection = () => {
     const history = useHistory();
     const [collectionData, setCollectionData] = useState({
         name: "",
+        photo: "",
+        description: ""
     });
 
     function handleCancel(e) {
+        e.preventDefault();
         setCollectionData({
             name: "",
-        })
-        history.push('/mycollections')
+            photo: "",
+            description: ""
+        });
+        history.push('/mycollections');
     };
     
+    const routes = [
+        {
+            path: "/uploadcollection/name", 
+            component: UploadCollection_name,
+            key: "name",
+            uniqueProps: [handleCancel, collectionData, setCollectionData]
+        },
+        {
+            path: "/uploadcollection/photo", 
+            component: UploadCollection_photo,
+            key: "name",
+            uniqueProps: [handleCancel, collectionData, setCollectionData]
+        },
+        {
+            path: "/uploadcollection/description", 
+            component: UploadCollection_description,
+            key: "name",
+            uniqueProps: [handleCancel, collectionData, setCollectionData]
+        },
+    ];
+
     return (
         <div className="formBackground">
             <Switch>
-                <Route 
-                    path="/uploadcollection/name"
-                    component={UploadCollection_name}
-                    collectionData={collectionData}
-                    setCollectionData={setCollectionData}
-                    handleCancel={handleCancel}/>
-                <Route 
-                    path="/uploadcollection/description"
-                    component={UploadCollection_description}
-                    collectionData={collectionData}
-                    setCollectionData={setCollectionData}
-                    handleCancel={handleCancel}/>
-                <Route 
-                    path="/uploadcollection/photo"
-                    component={UploadCollection_photo}
-                    collectionData={collectionData}
-                    setCollectionData={setCollectionData}
-                    handleCancel={handleCancel}/>
+                {routes.map(({ path, key, component: C, ...uniqueProps }) => (
+                    <Route 
+                        path={path}
+                        key={key}
+                        render={(props) => 
+                            <C 
+                                {...props} 
+                                handleCancel={handleCancel} 
+                                collectionData={collectionData} 
+                                setCollectionData={setCollectionData}/>}/>
+                ))}
             </Switch>
         </div>
     );
