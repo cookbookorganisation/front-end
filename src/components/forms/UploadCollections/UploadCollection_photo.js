@@ -59,7 +59,7 @@ const UploadCollection_photo = ({ collectionData, setCollectionData, handleCance
 
     function handleNext(e) {
         e.preventDefault();
-        history.push('/uploadrecipe/servings')
+        // history.push('/uploadrecipe/servings')
     };
 
     return (

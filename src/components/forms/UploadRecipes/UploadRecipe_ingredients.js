@@ -4,7 +4,18 @@ import { makeStyles, Container, Typography, Button, TextField, Grid } from '@mat
 import GoHomeIcon from '../../GoHomeIcon';
 
 const useStyles = makeStyles((theme) => ({
+    icon: {
+        display: "flex", 
+        alignSelf: "flex-start", 
+        marginTop: "8%", 
+        marginLeft: "-1.5%", 
+        width: "8%"
+    },
     paper: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "flex-start", 
         marginTop: theme.spacing(5),
         padding: theme.spacing(3, 6),
         border: "1px solid black",
@@ -24,6 +35,15 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "row",
         alignSelf: "flex-end",
         margin: theme.spacing(3, 0, 3, 3),
+    },
+    next: {
+        borderRadius: "2px",
+        padding: "1% 18%",
+    },
+    cancel: {
+        borderRadius: "2px",
+        padding: "1% 18%",
+        marginLeft: "5%"
     },
 }));
 
@@ -45,17 +65,14 @@ const UploadRecipe_ingredients = ({ handleCancel, setRecipeData, recipeData }) =
     
     return (
         <Container component="main" maxWidth="md">
-            <div 
-            onClick={handleCancel}
-            style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%", width: "8%" }}>
+             <div onClick={handleCancel} className={classes.icon}>
                 <GoHomeIcon/>
             </div>
-
-            <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
+            <Grid container className={classes.paper}>
                 <Grid item style={{ width: "100%" }}>
                     <Typography component="h5" variant="h5" className={classes.header}>
                         What are the ingredients?  
-                        <span role="img" aria-label="emoji-silverware" style={{ marginLeft: "3%" }}>🥄</span>
+                        <span role="img" aria-label="spoon emoji" style={{ marginLeft: "3%" }}>🥄</span>
                     </Typography>
                 </Grid>
 
@@ -72,25 +89,10 @@ const UploadRecipe_ingredients = ({ handleCancel, setRecipeData, recipeData }) =
                 </Grid> */}
 
                 <Grid item className={classes.buttons}>
-                    <Button 
-                    variant="contained" 
-                    color="primary" 
-                    style={{ 
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                    }}
-                    onClick={handleNext}>
+                    <Button variant="contained" color="primary" className={classes.next} onClick={handleNext}>
                         Next
                     </Button>
-                    <Button 
-                    variant="outlined" 
-                    color="secondary"
-                    style={{ 
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                        marginLeft: "5%"
-                    }}
-                    onClick={handleCancel}>
+                    <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
                         Cancel
                     </Button>
                 </Grid>

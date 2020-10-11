@@ -4,7 +4,18 @@ import { makeStyles, Container, Typography, Button, TextField, Grid } from '@mat
 import GoHomeIcon from '../../GoHomeIcon';
 
 const useStyles = makeStyles((theme) => ({
+    icon: {
+        display: "flex", 
+        alignSelf: "flex-start", 
+        marginTop: "8%", 
+        marginLeft: "-1.5%", 
+        width: "8%"
+    },
     paper: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "flex-start", 
         marginTop: theme.spacing(5),
         padding: theme.spacing(3, 6),
         border: "1px solid black",
@@ -27,6 +38,24 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 3, 3),
         width: "60%"
     },
+    fullWidth: {
+        width: "100%"
+    },
+    emoji: {
+        marginLeft: "3%"
+    },
+    next: {
+        borderRadius: "2px",
+        padding: "1% 18%",
+    },
+    skipAndCancel: {
+        borderRadius: "2px",
+        padding: "1% 18%",
+        marginLeft: "5%"
+    },
+    form: {
+        width: "50%"
+    }
 }));
 
 const UploadRecipe_pairings = ({ handleCancel, setRecipeData, recipeData }) => {
@@ -56,61 +85,33 @@ const UploadRecipe_pairings = ({ handleCancel, setRecipeData, recipeData }) => {
     
     return (
         <Container component="main" maxWidth="md">
-            <div 
-            onClick={handleCancel}
-            style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%", width: "8%" }}>
+            <div onClick={handleCancel} className={classes.icon}>
                 <GoHomeIcon/>
             </div>
-            <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
-                <Grid item style={{ width: "100%" }}>
+            <Grid container className={classes.paper}>
+                <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
                         Does the chef recommend pairing <br/> this dish with something special?
-                        <span role="img" aria-label="emoji-silverware" style={{ marginLeft: "3%" }}>🍷</span>
+                        <span role="img" aria-label="wine emoji" className={classes.emoji}>🍷</span>
                     </Typography>
                 </Grid>
-
-                <Grid item style={{ width: "50%" }}>
+                <Grid item className={classes.form}>
                     <TextField
                     onChange={handleChange}
                     fullWidth
                     id="pairings"
                     label="Ex: WHITE WINE"
                     name="pairings"
-                    value={recipeData.pairings}
-                    />
+                    value={recipeData.pairings}/>
                 </Grid>
-
                 <Grid item className={classes.buttons}>
-                    <Button 
-                    variant="contained" 
-                    color="primary" 
-                    style={{
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                    }}
-                    onClick={handleNext}>
+                    <Button variant="contained" color="primary" className={classes.next} onClick={handleNext}>
                         Next
                     </Button>
-                    <Button
-                    variant="contained"
-                    color="default"
-                    style={{
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                        marginLeft: "3%"
-                    }}
-                    onClick={handleSkip}>
+                    <Button variant="contained" color="default" className={classes.skipAndCancel} onClick={handleSkip}>
                         Skip
                     </Button>
-                    <Button 
-                    variant="outlined" 
-                    color="secondary"
-                    style={{ 
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                        marginLeft: "3%"
-                    }}
-                    onClick={handleCancel}>
+                    <Button variant="outlined" color="secondary" className={classes.skipAndCancel} onClick={handleCancel}>
                         Cancel
                     </Button>
                 </Grid>
