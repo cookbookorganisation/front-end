@@ -148,7 +148,6 @@ const UploadRecipe_photo = ({ handleCancel, setRecipeData, recipeData }) => {
                         </Typography>
                     </Grid>
                 </Grid>
-
                 <Grid item className={classes.buttons}>
                     <Button variant="contained" color="primary" className={classes.next} onClick={handleNext}>
                         Next
