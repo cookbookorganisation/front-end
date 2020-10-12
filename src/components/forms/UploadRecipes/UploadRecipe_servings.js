@@ -1,14 +1,20 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
+import { makeStyles, Container, Typography, Button, TextField, Grid, Box } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
+import BorderLinearProgress from '../BorderLinearProgress';
 
 const useStyles = makeStyles((theme) => ({
+    bar: {
+        display: "flex", 
+        alignItems: "center",
+        flexGrow: 1,
+        margin: theme.spacing(3, 0)
+    },
     icon: {
         display: "flex", 
         alignSelf: "flex-start", 
-        marginTop: "8%", 
-        marginLeft: "-1.5%", 
+        margin: theme.spacing(4, 0, 4, -2), 
         width: "8%"
     },
     paper: {
@@ -16,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "flex-start", 
-        marginTop: theme.spacing(5),
         padding: theme.spacing(3, 6),
         border: "1px solid black",
         boxShadow: "3px 3px 8px #888888",
@@ -37,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row",
         alignSelf: "flex-end",
+        justifyContent: "space-between",
         margin: theme.spacing(3, 0, 3, 3),
+        width: "35%"
     },
     fullWidth: {
         width: "100%"
@@ -45,14 +52,22 @@ const useStyles = makeStyles((theme) => ({
     form: {
         width: "30%" 
     },
-    next: {
+    button: {
         borderRadius: "2px",
-        padding: "1% 18%",
+        padding: "1% 15%",
+    },
+    cancelDiv: {
+        display: "flex",
+        justifyContent: "flex-end",
     },
     cancel: {
         borderRadius: "2px",
-        padding: "1% 18%",
-        marginLeft: "5%"
+        padding: "1% 5%",
+        backgroundColor: "#f8f8ff",
+        boxShadow: "3px 3px 8px #888888",
+        "&:hover": {
+            backgroundColor: "#fcf5f5"
+        },
     },
 }));
 
@@ -97,16 +112,30 @@ const UploadRecipe_servings = ({ handleCancel, setRecipeData, recipeData }) => {
                     value={recipeData.name}
                     />
                 </Grid>
-
                 <Grid item className={classes.buttons}>
-                    <Button variant="contained" color="primary" className={classes.next} onClick={handleNext}>
-                        Next
+                    <Button variant="outlined" color="primary" className={classes.button} onClick={()=>history.goBack()}>
+                        Back
                     </Button>
-                    <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
-                        Cancel
+                    <Button variant="contained" color="primary" className={classes.button} onClick={handleNext}>
+                        Next
                     </Button>
                 </Grid>
             </Grid>
+            <Box className={classes.bar}>
+                <Box className={classes.fullWidth} mr={1}>
+                    <BorderLinearProgress variant="determinate" value={40} />
+                </Box>
+                <Box minWidth={35}>
+                    <Typography variant="body2" color="textSecondary">
+                        40%
+                    </Typography>
+                </Box>
+            </Box>
+            <div className={classes.cancelDiv}>
+                <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
+                    Cancel
+                </Button>
+            </div>
         </Container>
     );
 };
