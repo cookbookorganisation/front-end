@@ -35,7 +35,8 @@ const UploadRecipe = () => {
             temperature: "",
             description: "",
             tradeSecrets: "",
-            pairings: ""
+            pairings: "",
+            ingredients: []
         });
         history.push('/mycollections');
     };

@@ -1,11 +1,28 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
+import { makeStyles, Container, Typography, Button, TextField, Grid, Box } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
+import BorderLinearProgress from '../BorderLinearProgress';
+
 
 const useStyles = makeStyles((theme) => ({
+    bar: {
+        display: "flex", 
+        alignItems: "center",
+        flexGrow: 1,
+        margin: theme.spacing(3, 0)
+    },
+    icon: {
+        display: "flex", 
+        alignSelf: "flex-start", 
+        margin: theme.spacing(4, 0, 4, -2),
+        width: "8%"
+    },
     paper: {
-        marginTop: theme.spacing(5),
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "flex-start", 
         padding: theme.spacing(3, 6),
         border: "1px solid black",
         boxShadow: "3px 3px 8px #888888",
@@ -23,9 +40,33 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row",
         alignSelf: "flex-end",
-        justifyContent: "flex-end",
+        justifyContent: "space-between",
         margin: theme.spacing(3, 0, 3, 3),
-        width: "60%"
+        width: "50%"
+    },
+    button: {
+        borderRadius: "2px",
+        padding: "1% 15%",
+        marginLeft: theme.spacing(2)
+    },
+    fullWidth: {
+        width: "100%"
+    },
+    cancelDiv: {
+        display: "flex",
+        justifyContent: "flex-end",
+    },
+    cancel: {
+        borderRadius: "2px",
+        padding: "1% 5%",
+        backgroundColor: "#f8f8ff",
+        boxShadow: "3px 3px 8px #888888",
+        "&:hover": {
+            backgroundColor: "#fcf5f5"
+        },
+    },
+    emoji: {
+        marginLeft: "3%"
     },
 }));
 
@@ -43,73 +84,49 @@ const UploadRecipe_oven = ({ handleCancel, setRecipeData, recipeData }) => {
     };
 
     function handleNo(e) {
+        e.preventDefault();
         history.push('/uploadrecipe/ingredients');
     };
 
     return (
         <Container component="main" maxWidth="md">
-            <div 
-            onClick={handleCancel}
-            style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%", width: "8%" }}>
+            <div onClick={handleCancel} className={classes.icon}>
                 <GoHomeIcon/>
             </div>
-
-            <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
-                <Grid item style={{ width: "100%" }}>
+            <Grid container className={classes.paper}>
+                <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
                         Do you need to pre-heat an oven?
-                        <span role="img" aria-label="emoji-silverware" style={{ marginLeft: "3%" }}>🔥</span>
+                        <span role="img" aria-label=" fire emoji" className={classes.emoji}>🔥</span>
                     </Typography>
                 </Grid>
-
-                {/* <Grid item style={{ width: "100%" }}>
-                    <TextField
-                    onChange={handleChange}
-                    required
-                    fullWidth
-                    id="oven"
-                    label="Ex: NANA'S CHOCOLATE CAKE"
-                    name="name"
-                    value={recipeData.name}
-                    />
-                </Grid> */}
-
                 <Grid item className={classes.buttons}>
-                    <Button 
-                    variant="contained" 
-                    color="primary" 
-                    style={{ 
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                    }}
-                    onClick={handleYes}>
-                        Yes
+                    <Button variant="outlined" color="primary" className={classes.button} onClick={()=>history.goBack()}>
+                        Back
                     </Button>
-                    <Button
-                    variant="contained"
-                    color="default"
-                    style={{
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                        marginLeft: "3%"
-                    }}
-                    onClick={handleNo}>
+                    <Button variant="contained" color="default" className={classes.button} onClick={handleNo}>
                         No
                     </Button>
-                    <Button 
-                    variant="outlined" 
-                    color="secondary"
-                    style={{ 
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                        marginLeft: "5%"
-                    }}
-                    onClick={handleCancel}
-                    >
-                        Cancel
+                    <Button variant="contained" color="primary" className={classes.button} onClick={handleYes}>
+                        Yes
                     </Button>
                 </Grid>
             </Grid>
+            <Box className={classes.bar}>
+                <Box className={classes.fullWidth} mr={1}>
+                    <BorderLinearProgress variant="determinate" value={50} />
+                </Box>
+                <Box minWidth={35}>
+                    <Typography variant="body2" color="textSecondary">
+                        50%
+                    </Typography>
+                </Box>
+            </Box>
+            <div className={classes.cancelDiv}>
+                <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
+                    Cancel
+                </Button>
+            </div>
         </Container>
     );
 };

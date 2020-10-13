@@ -1,11 +1,28 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
+import { makeStyles, Container, Typography, Button, TextField, Grid, Box } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
+import BorderLinearProgress from '../BorderLinearProgress'
 
 const useStyles = makeStyles((theme) => ({
+    bar: {
+        display: "flex", 
+        alignItems: "center",
+        flexGrow: 1,
+        margin: theme.spacing(3, 0)
+    },
+    icon: {
+
+        display: "flex", 
+        alignSelf: "flex-start", 
+        margin: theme.spacing(4, 0, 4, -2),
+        width: "8%"
+    },
     paper: {
-        marginTop: theme.spacing(5),
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "flex-start", 
         padding: theme.spacing(3, 6),
         border: "1px solid black",
         boxShadow: "3px 3px 8px #888888",
@@ -23,7 +40,36 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         flexDirection: "row",
         alignSelf: "flex-end",
+        justifyContent: "space-between",
         margin: theme.spacing(3, 0, 3, 3),
+        width: "35%"
+    },
+    button: {
+        borderRadius: "2px",
+        padding: "1% 15%",    
+        marginLeft: theme.spacing(2)
+    },
+    fullWidth: {
+        width: "100%"
+    },
+    emoji: {
+        marginLeft: "3%"
+    },
+    form: {
+        width: "50%" 
+    },
+    cancelDiv: {
+        display: "flex",
+        justifyContent: "flex-end",
+    },
+    cancel: {
+        borderRadius: "2px",
+        padding: "1% 5%",
+        backgroundColor: "#f8f8ff",
+        boxShadow: "3px 3px 8px #888888",
+        "&:hover": {
+            backgroundColor: "#fcf5f5"
+        },
     },
 }));
 
@@ -45,21 +91,17 @@ const UploadCollection_name = ({ collectionData, setCollectionData, handleCancel
     
     return (
         <Container component="main" maxWidth="md">
-            <div 
-            onClick={handleCancel}
-            style={{ display: "flex", alignSelf: "flex-start", marginTop: "8%", marginLeft: "-1.5%", width: "8%" }}>
+            <div onClick={handleCancel} className={classes.icon}>
                 <GoHomeIcon/>
             </div>
-
-            <Grid container direction="column" justify="space-between" alignItems="flex-start" className={classes.paper}>
-                <Grid item style={{ width: "100%" }}>
+            <Grid container className={classes.paper}>
+                <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
                         What will this collection be called?  
-                        <span role="img" aria-label="emoji-silverware" style={{ marginLeft: "3%" }}>👩🏽‍💻</span>
+                        <span role="img" aria-label="computer emoji" className={classes.emoji}>👩🏽‍💻</span>
                     </Typography>
                 </Grid>
-
-                <Grid item style={{ width: "50%" }}>
+                <Grid item className={classes.form}>
                     <TextField
                     onChange={handleChange}
                     required
@@ -69,31 +111,30 @@ const UploadCollection_name = ({ collectionData, setCollectionData, handleCancel
                     name="name"
                     value={collectionData.name}/>
                 </Grid>
-
                 <Grid item className={classes.buttons}>
-                    <Button 
-                    variant="contained" 
-                    color="primary" 
-                    onClick={handleNext}
-                    style={{ 
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                    }}>
-                        Next
+                    <Button variant="outlined" color="primary" className={classes.button} onClick={()=>history.goBack()}>
+                        Back
                     </Button>
-                    <Button 
-                    variant="outlined" 
-                    color="secondary"
-                    onClick={handleCancel}
-                    style={{ 
-                        borderRadius: "2px",
-                        padding: "1% 18%",
-                        marginLeft: "5%"
-                    }}>
-                        Cancel
+                    <Button variant="contained" color="primary" className={classes.button} onClick={handleNext}>
+                        Next
                     </Button>
                 </Grid>
             </Grid>
+            <Box className={classes.bar}>
+                <Box className={classes.fullWidth} mr={1}>
+                    <BorderLinearProgress variant="determinate" value={33} />
+                </Box>
+                <Box minWidth={35}>
+                    <Typography variant="body2" color="textSecondary">
+                        33%
+                    </Typography>
+                </Box>
+            </Box>
+            <div className={classes.cancelDiv}>
+                <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
+                    Cancel
+                </Button>
+            </div>
         </Container>
     );
 };
