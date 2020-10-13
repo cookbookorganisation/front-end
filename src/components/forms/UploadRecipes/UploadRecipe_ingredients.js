@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, Container, Typography, Button, TextField, Grid, Box } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
-import BorderLinearProgress from '../BorderLinearProgress'
+import BorderLinearProgress from '../BorderLinearProgress';
+import cuid from 'cuid';
 
 const useStyles = makeStyles((theme) => ({
     bar: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: "3px 3px 8px #888888",
         backgroundColor: "#f8f8ff",
         borderRadius: "5px",
-        height: "50%",
+        minHeight: "50%",
     },
     header: {
         display: "flex", 
@@ -63,21 +64,86 @@ const useStyles = makeStyles((theme) => ({
     fullWidth: {
         width: "100%"
     },
+    form: {
+        display: "flex",
+        justifyContent: "space-between",
+        width: "100%"
+    },
+    input: {
+        marginRight: theme.spacing(2)
+    },
+    // runningIngredientsDiv: {
+    //     display: "flex",
+    //     flex: "flex-grow"
+    // },
+    runningIngredient: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        borderRadius: "2px",
+        backgroundColor: "#F1828D",
+        color: "#FFFFFF",
+        padding: theme.spacing(1),
+        margin: theme.spacing(3),
+        minWidth: "15%",
+    }
 }));
 
 const UploadRecipe_ingredients = ({ handleCancel, setRecipeData, recipeData }) => {
     const history = useHistory();
     const classes = useStyles();
+    const [ingredient, setIngredient] = useState({
+        quantity: "",
+        unit: "",
+        name: "",
+    });
+    const [runningIngredients, setRunningIngredients] = useState([]);
 
-    function handleChange(e) {
+    function handleChangeQuantity(e) {
         e.preventDefault();
-        setRecipeData({
-            ...recipeData,
-            ingredients: e.target.value 
-        })
+        setIngredient({
+            ...ingredient,
+            quantity: e.target.value
+        });
+    };
+
+    function handleChangeUnit(e) {
+        e.preventDefault();
+        setIngredient({
+            ...ingredient,
+            unit: e.target.value
+        });
+    };
+    function handleChangeName(e) {
+        e.preventDefault();
+        setIngredient({
+            ...ingredient,
+            name: e.target.value
+        });
+    };
+
+    function handleAdd(e) {
+        e.preventDefault();
+        setRunningIngredients([...runningIngredients, ingredient]);
+        setIngredient({
+            quantity: "",
+            unit: "",
+            name: "",
+        });
+    };
+
+    function handleRemove(e, ri) {
+        e.preventDefault();
+        //this doesn't work
+        setRunningIngredients([runningIngredients.filter(ing => ing !== ri)]);
     };
 
     function handleNext(e) {
+        e.preventDefault();
+        setRecipeData({
+            ...recipeData,
+            ingredients: [...runningIngredients]
+        })
         history.push('/uploadrecipe/directions')
     };
     
@@ -87,24 +153,60 @@ const UploadRecipe_ingredients = ({ handleCancel, setRecipeData, recipeData }) =
                 <GoHomeIcon/>
             </div>
             <Grid container className={classes.paper}>
-                <Grid item style={{ width: "100%" }}>
+                <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
                         What are the ingredients?  
                         <span role="img" aria-label="spoon emoji" style={{ marginLeft: "3%" }}>🥄</span>
                     </Typography>
                 </Grid>
-
-                {/* <Grid item style={{ width: "100%" }}>
+                <Grid item className={classes.form}>
                     <TextField
-                    onChange={handleChange}
+                    className={classes.input}
+                    onChange={handleChangeQuantity}
                     required
                     fullWidth
-                    id="name"
-                    label="Ex: NANA'S CHOCOLATE CAKE"
-                    name="name"
-                    value={recipeData.name}
+                    id="measurement_quantity"
+                    label="Ex: 1"
+                    name="measurement_quantity"
+                    value={ingredient.quantity}
+                    style={{ width: "15%" }}
                     />
-                </Grid> */}
+                    <TextField
+                    className={classes.input}
+                    onChange={handleChangeUnit}
+                    required
+                    fullWidth
+                    id="measurement_unit"
+                    label="Ex: Cup"
+                    name="measurement_unit"
+                    value={ingredient.unit}
+                    style={{ width: "20%" }}
+                    />
+                    <TextField
+                    className={classes.input}
+                    onChange={handleChangeName}
+                    required
+                    fullWidth
+                    id="ingredient_name"
+                    label="Ex: Sugar"
+                    name="ingredient_name"
+                    value={ingredient.name}
+                    style={{ width: "30%" }}
+                    />
+                    <Button variant="contained" color="secondary" onClick={handleAdd}>
+                        Add ingredient
+                    </Button>
+                </Grid>
+                <Grid container item>
+                    {runningIngredients.map((ri) => (
+                        <div key={cuid()} className={classes.runningIngredient}>
+                            <Typography component="h6" variant="subtitle1">{ri.quantity}</Typography> &nbsp;
+                            <Typography component="h6" variant="subtitle1">{ri.unit}</Typography> &nbsp;
+                            <Typography component="h6" variant="subtitle1">{ri.name}</Typography> &nbsp;
+                            <Typography component="h6" variant="subtitle1" style={{ cursor: "pointer" }} onClick={(ri)=>handleRemove(ri)}>X</Typography>
+                        </div>
+                    ))}
+                </Grid>
                 <Grid item className={classes.buttons}>
                     <Button variant="outlined" color="primary" className={classes.button} onClick={()=>history.goBack()}>
                         Back

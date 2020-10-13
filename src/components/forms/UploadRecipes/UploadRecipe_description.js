@@ -99,7 +99,7 @@ const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) =
         });
         history.push('/uploadrecipe/servings');
     }
-
+   
     return (
         <Container component="main" maxWidth="md">
              <div onClick={handleCancel} className={classes.icon}>
@@ -115,7 +115,6 @@ const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) =
                         How is it meaningful to you? Who taught you the recipe? Where does it come from?
                     </Typography>
                 </Grid>
-
                 <Grid item className={classes.fullWidth}>
                     <TextField
                     onChange={handleChange}
@@ -123,8 +122,7 @@ const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) =
                     id="description"
                     label="Ex: NANA WOULD MAKE THIS CAKE FOR MY BRITHDAY. SHE TAUGHT ME WHEN I WAS 10 YEARS OLD."
                     name="name"
-                    value={recipeData.name}
-                    />
+                    value={recipeData.description}/>
                 </Grid>
                 <Grid item className={classes.buttons}>
                     <Button variant="outlined" color="primary" className={classes.button} onClick={()=>history.goBack()}>

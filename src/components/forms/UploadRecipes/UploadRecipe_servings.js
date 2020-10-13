@@ -109,7 +109,7 @@ const UploadRecipe_servings = ({ handleCancel, setRecipeData, recipeData }) => {
                     id="servings"
                     label="Ex: 12-14 COOKIES"
                     name="name"
-                    value={recipeData.name}
+                    value={recipeData.servings}
                     />
                 </Grid>
                 <Grid item className={classes.buttons}>

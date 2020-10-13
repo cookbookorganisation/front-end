@@ -86,7 +86,7 @@ const UploadRecipe = ({ handleCancel, recipeData, setRecipeData }, props) => {
     function handleNext(e) {
         history.push('/uploadrecipe/description')
     };
-
+ 
     return (
         <Container component="main" maxWidth="md">
             <div onClick={handleCancel} className={classes.icon}>

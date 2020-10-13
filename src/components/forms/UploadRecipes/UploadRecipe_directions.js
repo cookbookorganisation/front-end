@@ -90,6 +90,8 @@ const UploadRecipe_directions = ({ handleCancel, setRecipeData, recipeData }) =>
         history.push('/uploadrecipe/tradesecrets')
     };
 
+    console.log("dir: ", recipeData)
+
     return (
         <Container component="main" maxWidth="md">
             <div onClick={handleCancel} className={classes.icon}>
@@ -113,7 +115,7 @@ const UploadRecipe_directions = ({ handleCancel, setRecipeData, recipeData }) =>
                     id="directions"
                     label="Ex: Step 1: Chop the celery"
                     name="directions"
-                    value={recipeData.name}
+                    value={recipeData.directions}
                     />
                 </Grid>
                 <Grid item className={classes.buttons}>

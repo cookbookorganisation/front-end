@@ -60,9 +60,6 @@ const useStyles = makeStyles((theme) => ({
     emoji: {
         marginLeft: "3%"
     },
-    form: {
-        width: "50%"
-    },
     cancelDiv: {
         display: "flex",
         justifyContent: "flex-end",
@@ -118,12 +115,12 @@ const UploadRecipe_pairings = ({ handleCancel, setRecipeData, recipeData }) => {
                         A glass of red wine, perhaps?
                     </Typography>
                 </Grid>
-                <Grid item className={classes.form}>
+                <Grid item className={classes.fullWidth}>
                     <TextField
                     onChange={handleChange}
                     fullWidth
                     id="pairings"
-                    label="Ex: WHITE WINE"
+                    label="Ex: Red wine and mashed potatoes goes great with this!"
                     name="pairings"
                     value={recipeData.pairings}/>
                 </Grid>
