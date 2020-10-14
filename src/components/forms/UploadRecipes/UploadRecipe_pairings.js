@@ -7,7 +7,6 @@ import BorderLinearProgress from '../BorderLinearProgress';
 const useStyles = makeStyles((theme) => ({
     bar: {
         display: "flex", 
-        alignItems: "center",
         flexGrow: 1,
         margin: theme.spacing(3, 0)
     },
@@ -87,18 +86,18 @@ const UploadRecipe_pairings = ({ handleCancel, setRecipeData, recipeData }) => {
         })
     };
 
-    function handleSubmit(e) {
-        // history.push('/uploadrecipe/pairings');
-    };
-
     function handleSkip(e) {
         e.preventDefault();
         setRecipeData({
             ...recipeData,
             pairings: ""
         });
-        // history.push('/uploadrecipe/pairings');
-    }
+        history.push('/uploadrecipe/collections');
+    };
+
+    function handleNext() {
+        history.push('/uploadrecipe/collections');
+    };
 
     return (
         <Container component="main" maxWidth="md">
@@ -131,19 +130,14 @@ const UploadRecipe_pairings = ({ handleCancel, setRecipeData, recipeData }) => {
                     <Button variant="contained" color="default" className={classes.button} onClick={handleSkip}>
                         Skip
                     </Button>
-                    <Button variant="contained" color="primary" className={classes.button} onClick={handleSubmit}>
-                        submit
+                    <Button variant="contained" color="primary" className={classes.button} onClick={handleNext}>
+                        Next
                     </Button>
                 </Grid>
             </Grid>
             <Box className={classes.bar}>
                 <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={100} />
-                </Box>
-                <Box minWidth={35}>
-                    <Typography variant="body2" color="textSecondary">
-                        100%
-                    </Typography>
+                    <BorderLinearProgress variant="determinate" value={90} />
                 </Box>
             </Box>
             <div className={classes.cancelDiv}>

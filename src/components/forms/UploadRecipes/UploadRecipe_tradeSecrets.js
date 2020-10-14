@@ -7,7 +7,6 @@ import BorderLinearProgress from '../BorderLinearProgress';
 const useStyles = makeStyles((theme) => ({
     bar: {
         display: "flex", 
-        alignItems: "center",
         flexGrow: 1,
         margin: theme.spacing(3, 0)
     },
@@ -87,7 +86,7 @@ const UploadRecipe_tradeSecrets = ({ handleCancel, setRecipeData, recipeData }) 
         })
     };
 
-    function handleNext(e) {
+    function handleNext() {
         history.push('/uploadrecipe/pairings');
     };
 
@@ -139,12 +138,7 @@ const UploadRecipe_tradeSecrets = ({ handleCancel, setRecipeData, recipeData }) 
             </Grid>
             <Box className={classes.bar}>
                 <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={90} />
-                </Box>
-                <Box minWidth={35}>
-                    <Typography variant="body2" color="textSecondary">
-                        90%
-                    </Typography>
+                    <BorderLinearProgress variant="determinate" value={81} />
                 </Box>
             </Box>
             <div className={classes.cancelDiv}>
