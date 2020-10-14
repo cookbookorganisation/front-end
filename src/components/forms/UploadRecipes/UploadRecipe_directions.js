@@ -7,7 +7,6 @@ import BorderLinearProgress from '../BorderLinearProgress';
 const useStyles = makeStyles((theme) => ({
     bar: {
         display: "flex", 
-        alignItems: "center",
         flexGrow: 1,
         margin: theme.spacing(3, 0)
     },
@@ -90,8 +89,6 @@ const UploadRecipe_directions = ({ handleCancel, setRecipeData, recipeData }) =>
         history.push('/uploadrecipe/tradesecrets')
     };
 
-    console.log("dir: ", recipeData)
-
     return (
         <Container component="main" maxWidth="md">
             <div onClick={handleCancel} className={classes.icon}>
@@ -129,12 +126,7 @@ const UploadRecipe_directions = ({ handleCancel, setRecipeData, recipeData }) =>
             </Grid>
             <Box className={classes.bar}>
                 <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={80} />
-                </Box>
-                <Box minWidth={35}>
-                    <Typography variant="body2" color="textSecondary">
-                        80%
-                    </Typography>
+                    <BorderLinearProgress variant="determinate" value={72} />
                 </Box>
             </Box>
             <div className={classes.cancelDiv}>

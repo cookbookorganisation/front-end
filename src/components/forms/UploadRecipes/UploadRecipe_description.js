@@ -7,7 +7,6 @@ import BorderLinearProgress from '../BorderLinearProgress'
 const useStyles = makeStyles((theme) => ({
     bar: {
         display: "flex", 
-        alignItems: "center",
         flexGrow: 1,
         margin: theme.spacing(3, 0)
     },
@@ -138,12 +137,7 @@ const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) =
             </Grid>
             <Box className={classes.bar}>
                 <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={20} />
-                </Box>
-                <Box minWidth={35}>
-                    <Typography variant="body2" color="textSecondary">
-                        20%
-                    </Typography>
+                    <BorderLinearProgress variant="determinate" value={18} />
                 </Box>
             </Box>
             <div className={classes.cancelDiv}>

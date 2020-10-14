@@ -10,6 +10,7 @@ import UploadRecipe_servings from './UploadRecipe_servings';
 import UploadRecipe_temperature from './UploadRecipe_temperature';
 import UploadRecipe_tradeSecrets from './UploadRecipe_tradeSecrets';
 import UploadRecipe_oven from './UploadRecipe_oven';
+import UploadRecipe_collections from './UploadRecipe_collections';
 
 const UploadRecipe = () => {
     const history = useHistory();
@@ -22,7 +23,9 @@ const UploadRecipe = () => {
         description: "",
         tradeSecrets: "",
         pairings: "", 
-        servings: ""
+        servings: "",
+        ingredients: [],
+        collections: []
     });
 
     function handleCancel(e) {
@@ -36,7 +39,8 @@ const UploadRecipe = () => {
             description: "",
             tradeSecrets: "",
             pairings: "",
-            ingredients: []
+            ingredients: [],
+            collections: []
         });
         history.push('/mycollections');
     };
@@ -102,6 +106,12 @@ const UploadRecipe = () => {
             key: "tradeSecrets",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         },
+        {
+            path: "/uploadrecipe/collections",
+            component: UploadRecipe_collections,
+            key: "collections",
+            uniqueProps: [handleCancel, recipeData, setRecipeData]
+        }
     ]
     
     return (

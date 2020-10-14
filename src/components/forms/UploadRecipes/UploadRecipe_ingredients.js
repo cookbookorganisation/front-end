@@ -8,7 +8,6 @@ import cuid from 'cuid';
 const useStyles = makeStyles((theme) => ({
     bar: {
         display: "flex", 
-        alignItems: "center",
         flexGrow: 1,
         margin: theme.spacing(3, 0)
     },
@@ -132,10 +131,8 @@ const UploadRecipe_ingredients = ({ handleCancel, setRecipeData, recipeData }) =
         });
     };
 
-    function handleRemove(e, ri) {
-        e.preventDefault();
-        //this doesn't work
-        setRunningIngredients([runningIngredients.filter(ing => ing !== ri)]);
+    function handleRemove(ri) {
+        setRunningIngredients(runningIngredients.filter(ing => ing !== ri))
     };
 
     function handleNext(e) {
@@ -146,7 +143,7 @@ const UploadRecipe_ingredients = ({ handleCancel, setRecipeData, recipeData }) =
         })
         history.push('/uploadrecipe/directions')
     };
-    
+
     return (
         <Container component="main" maxWidth="md">
              <div onClick={handleCancel} className={classes.icon}>
@@ -203,7 +200,7 @@ const UploadRecipe_ingredients = ({ handleCancel, setRecipeData, recipeData }) =
                             <Typography component="h6" variant="subtitle1">{ri.quantity}</Typography> &nbsp;
                             <Typography component="h6" variant="subtitle1">{ri.unit}</Typography> &nbsp;
                             <Typography component="h6" variant="subtitle1">{ri.name}</Typography> &nbsp;
-                            <Typography component="h6" variant="subtitle1" style={{ cursor: "pointer" }} onClick={(ri)=>handleRemove(ri)}>X</Typography>
+                            <Typography component="h6" variant="subtitle1" style={{ cursor: "pointer" }} onClick={()=>handleRemove(ri)}>X</Typography>
                         </div>
                     ))}
                 </Grid>
@@ -218,12 +215,7 @@ const UploadRecipe_ingredients = ({ handleCancel, setRecipeData, recipeData }) =
             </Grid>
             <Box className={classes.bar}>
                 <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={70} />
-                </Box>
-                <Box minWidth={35}>
-                    <Typography variant="body2" color="textSecondary">
-                        70%
-                    </Typography>
+                    <BorderLinearProgress variant="determinate" value={63} />
                 </Box>
             </Box>
             <div className={classes.cancelDiv}>
