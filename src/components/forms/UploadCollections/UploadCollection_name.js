@@ -124,11 +124,6 @@ const UploadCollection_name = ({ collectionData, setCollectionData, handleCancel
                 <Box className={classes.fullWidth} mr={1}>
                     <BorderLinearProgress variant="determinate" value={33} />
                 </Box>
-                <Box minWidth={35}>
-                    <Typography variant="body2" color="textSecondary">
-                        33%
-                    </Typography>
-                </Box>
             </Box>
             <div className={classes.cancelDiv}>
                 <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>

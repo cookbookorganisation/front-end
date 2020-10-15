@@ -123,11 +123,6 @@ const UploadCollection_description = ({ collectionData, setCollectionData, handl
                 <Box className={classes.fullWidth} mr={1}>
                     <BorderLinearProgress variant="determinate" value={66} />
                 </Box>
-                <Box minWidth={35}>
-                    <Typography variant="body2" color="textSecondary">
-                        66%
-                    </Typography>
-                </Box>
             </Box>
             <div className={classes.cancelDiv}>
                 <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
