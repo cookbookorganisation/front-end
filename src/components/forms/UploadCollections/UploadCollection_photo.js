@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, Container, Typography, Button, Grid, Avatar, Box  } from '@material-ui/core';
-import GoHomeIcon from '../../GoHomeIcon';
+import Icon from '../Icon';
 import PublishRoundedIcon from '@material-ui/icons/PublishRounded';
 import BorderLinearProgress from '../BorderLinearProgress';
 
@@ -11,12 +11,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
         flexGrow: 1,
         margin: theme.spacing(3, 0)
-    },
-    icon: {
-        display: "flex", 
-        alignSelf: "flex-start", 
-        margin: theme.spacing(4, 0, 4, -2),
-        width: "8%"
     },
     paper: {
         display: "flex",
@@ -128,9 +122,7 @@ const UploadCollection_photo = ({ collectionData, setCollectionData, handleCance
 
     return (
         <Container component="main" maxWidth="md">
-            <div onClick={handleCancel} className={classes.icon}>
-                <GoHomeIcon/>
-            </div>
+            <Icon handleCancel={handleCancel}/>
             <Grid container className={classes.paper}>
                 <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
