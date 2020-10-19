@@ -1,21 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, TextField, Grid, Box } from '@material-ui/core';
-import GoHomeIcon from '../../GoHomeIcon';
-import BorderLinearProgress from '../BorderLinearProgress';
+import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
+import Icon from '../Icon';
+import ProgressBar from '../ProgressBar';
+import CancelButton from './CancelButton';
 
 const useStyles = makeStyles((theme) => ({
-    bar: {
-        display: "flex", 
-        flexGrow: 1,
-        margin: theme.spacing(3, 0)
-    },
-    icon: {
-        display: "flex", 
-        alignSelf: "flex-start", 
-        margin: theme.spacing(4, 0, 4, -2),
-        width: "8%"
-    },
+
     paper: {
         display: "flex",
         flexDirection: "column",
@@ -55,19 +46,6 @@ const useStyles = makeStyles((theme) => ({
     form: {
         width: "25%" 
     },
-    cancelDiv: {
-        display: "flex",
-        justifyContent: "flex-end",
-    },
-    cancel: {
-        borderRadius: "2px",
-        padding: "1% 5%",
-        backgroundColor: "#f8f8ff",
-        boxShadow: "3px 3px 8px #888888",
-        "&:hover": {
-            backgroundColor: "#fcf5f5"
-        },
-    },
 }));
 
 const UploadRecipe_temperature = ({ handleCancel, setRecipeData, recipeData }) => {
@@ -88,9 +66,7 @@ const UploadRecipe_temperature = ({ handleCancel, setRecipeData, recipeData }) =
 
     return (
         <Container component="main" maxWidth="md">
-            <div onClick={handleCancel} className={classes.icon}>
-                <GoHomeIcon/>
-            </div>
+            <Icon handleCancel={handleCancel}/>
             <Grid container className={classes.paper}>
                 <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
@@ -117,16 +93,8 @@ const UploadRecipe_temperature = ({ handleCancel, setRecipeData, recipeData }) =
                     </Button>
                 </Grid>
             </Grid>
-            <Box className={classes.bar}>
-                <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={54} />
-                </Box>
-            </Box>
-            <div className={classes.cancelDiv}>
-                <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
-                    Cancel
-                </Button>
-            </div>
+            <ProgressBar num={54}/>
+            <CancelButton handleCancel={handleCancel}/>
         </Container>
     );
 };

@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, TextField, Grid, Box, useTheme, Input, InputLabel, MenuItem, FormControl, ListItemText, Select, Checkbox, Chip } from '@material-ui/core';
-import GoHomeIcon from '../../GoHomeIcon';
-import BorderLinearProgress from '../BorderLinearProgress';
+import { makeStyles, Container, Typography, Button, Grid, InputLabel, MenuItem, FormControl, ListItemText, Select, Checkbox, Chip, Input } from '@material-ui/core';
+import Icon from '../Icon';
+import ProgressBar from '../ProgressBar';
+import RecipeModal from './RecipeModal';
+import CancelButton from './CancelButton';
 
 const useStyles = makeStyles((theme) => ({
-    bar: {
-        display: "flex", 
-        flexGrow: 1,
-        margin: theme.spacing(3, 0)
-    },
-    icon: {
-        display: "flex", 
-        alignSelf: "flex-start", 
-        margin: theme.spacing(4, 0, 4, -2), 
-        width: "8%"
-    },
     paper: {
         display: "flex",
         flexDirection: "column",
@@ -59,19 +50,6 @@ const useStyles = makeStyles((theme) => ({
     emoji: {
         marginLeft: "3%"
     },
-    cancelDiv: {
-        display: "flex",
-        justifyContent: "flex-end",
-    },
-    cancel: {
-        borderRadius: "2px",
-        padding: "1% 5%",
-        backgroundColor: "#f8f8ff",
-        boxShadow: "3px 3px 8px #888888",
-        "&:hover": {
-            backgroundColor: "#fcf5f5"
-        },
-    },
     formControl: {
         margin: theme.spacing(1),
         minWidth: "40%",
@@ -106,6 +84,7 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
     const history = useHistory();
     const classes = useStyles();
     const [collectionName, setCollectionName] = useState([]);
+    const [open, setOpen] = useState(false);
 
     const handleChange = (event) => {
         setCollectionName(event.target.value);
@@ -113,23 +92,16 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
 
     function handleSubmit(e) {
         e.preventDefault();
-
-        // setRecipeData({
-        //     ...recipeData,
-        //     collections: [...collectionName]
-        // }) 
-        // collectionName is an array that needs to be added to recipeData (the code above doesn't work)...
-        // ...and then sent to the redux store. 
-        // push to recipe card
-
-        console.log(recipeData)
+        setRecipeData({
+            ...recipeData,
+            collections: [...collectionName]
+        }) 
+        setOpen(true)
     };
 
     return (
         <Container component="main" maxWidth="md">
-            <div onClick={handleCancel} className={classes.icon}>
-                <GoHomeIcon/>
-            </div>
+            <Icon handleCancel={handleCancel}/>
             <Grid container className={classes.paper}>
                 <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
@@ -176,16 +148,9 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
                     </Button>
                 </Grid>
             </Grid>
-            <Box className={classes.bar}>
-                <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={100} />
-                </Box>
-            </Box>
-            <div className={classes.cancelDiv}>
-                <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
-                    Cancel
-                </Button>
-            </div>
+            <ProgressBar num={100}/>
+            <CancelButton handleCancel={handleCancel}/>
+            <RecipeModal open={open}/>
         </Container>
     );
 };

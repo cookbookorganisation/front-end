@@ -1,23 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, Grid, Avatar, Box  } from '@material-ui/core';
-import GoHomeIcon from '../../GoHomeIcon';
+import { makeStyles, Container, Typography, Button, Grid, Avatar } from '@material-ui/core';
+import Icon from '../Icon';
 import PublishRoundedIcon from '@material-ui/icons/PublishRounded';
-import BorderLinearProgress from '../BorderLinearProgress';
+import ProgressBar from '../ProgressBar';
+import CancelButton from './CancelButton';
 
 const useStyles = makeStyles((theme) => ({
-    bar: {
-        display: "flex", 
-        alignItems: "center",
-        flexGrow: 1,
-        margin: theme.spacing(3, 0)
-    },
-    icon: {
-        display: "flex", 
-        alignSelf: "flex-start", 
-        margin: theme.spacing(4, 0, 4, -2),
-        width: "8%"
-    },
     paper: {
         display: "flex",
         flexDirection: "column",
@@ -86,19 +75,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "gray", 
         color: "white"
     },
-    cancelDiv: {
-        display: "flex",
-        justifyContent: "flex-end",
-    },
-    cancel: {
-        borderRadius: "2px",
-        padding: "1% 5%",
-        backgroundColor: "#f8f8ff",
-        boxShadow: "3px 3px 8px #888888",
-        "&:hover": {
-            backgroundColor: "#fcf5f5"
-        },
-    },
 }));
 
 const UploadCollection_photo = ({ collectionData, setCollectionData, handleCancel }) => {
@@ -128,9 +104,7 @@ const UploadCollection_photo = ({ collectionData, setCollectionData, handleCance
 
     return (
         <Container component="main" maxWidth="md">
-            <div onClick={handleCancel} className={classes.icon}>
-                <GoHomeIcon/>
-            </div>
+            <Icon handleCancel={handleCancel}/>
             <Grid container className={classes.paper}>
                 <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
@@ -167,16 +141,8 @@ const UploadCollection_photo = ({ collectionData, setCollectionData, handleCance
                     </Button>
                 </Grid>
             </Grid>
-            <Box className={classes.bar}>
-                <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={100} />
-                </Box>
-            </Box>
-            <div className={classes.cancelDiv}>
-                <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
-                    Cancel
-                </Button>
-            </div>
+            <ProgressBar num={100}/>
+            <CancelButton handleCancel={handleCancel}/>
         </Container>
     );
 };
