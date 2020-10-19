@@ -4,6 +4,7 @@ import { makeStyles, Container, Typography, Button, Grid, Avatar, Box  } from '@
 import Icon from '../Icon';
 import PublishRoundedIcon from '@material-ui/icons/PublishRounded';
 import BorderLinearProgress from '../BorderLinearProgress';
+import CancelButton from './CancelButton';
 
 const useStyles = makeStyles((theme) => ({
     bar: {
@@ -80,19 +81,6 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "gray", 
         color: "white"
     },
-    cancelDiv: {
-        display: "flex",
-        justifyContent: "flex-end",
-    },
-    cancel: {
-        borderRadius: "2px",
-        padding: "1% 5%",
-        backgroundColor: "#f8f8ff",
-        boxShadow: "3px 3px 8px #888888",
-        "&:hover": {
-            backgroundColor: "#fcf5f5"
-        },
-    },
 }));
 
 const UploadCollection_photo = ({ collectionData, setCollectionData, handleCancel }) => {
@@ -164,11 +152,7 @@ const UploadCollection_photo = ({ collectionData, setCollectionData, handleCance
                     <BorderLinearProgress variant="determinate" value={100} />
                 </Box>
             </Box>
-            <div className={classes.cancelDiv}>
-                <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
-                    Cancel
-                </Button>
-            </div>
+            <CancelButton handleCancel={handleCancel}/>
         </Container>
     );
 };
