@@ -1,16 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, TextField, Grid, Box } from '@material-ui/core';
+import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
 import Icon from '../Icon';
-import BorderLinearProgress from '../BorderLinearProgress';
+import ProgressBar from '../ProgressBar';
 import CancelButton from './CancelButton';
 
 const useStyles = makeStyles((theme) => ({
-    bar: {
-        display: "flex", 
-        flexGrow: 1,
-        margin: theme.spacing(3, 0)
-    },
     paper: {
         display: "flex",
         flexDirection: "column",
@@ -104,11 +99,7 @@ const UploadRecipe_directions = ({ handleCancel, setRecipeData, recipeData }) =>
                     </Button>
                 </Grid>
             </Grid>
-            <Box className={classes.bar}>
-                <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={72} />
-                </Box>
-            </Box>
+            <ProgressBar num={72}/>
             <CancelButton handleCancel={handleCancel}/>
         </Container>
     );

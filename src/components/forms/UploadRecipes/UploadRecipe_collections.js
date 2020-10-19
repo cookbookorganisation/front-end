@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, Grid, Box, InputLabel, MenuItem, FormControl, ListItemText, Select, Checkbox, Chip, Input } from '@material-ui/core';
+import { makeStyles, Container, Typography, Button, Grid, InputLabel, MenuItem, FormControl, ListItemText, Select, Checkbox, Chip, Input } from '@material-ui/core';
 import Icon from '../Icon';
-import BorderLinearProgress from '../BorderLinearProgress';
+import ProgressBar from '../ProgressBar';
 import RecipeModal from './RecipeModal';
 import CancelButton from './CancelButton';
 
 const useStyles = makeStyles((theme) => ({
-    bar: {
-        display: "flex", 
-        flexGrow: 1,
-        margin: theme.spacing(3, 0)
-    },
     paper: {
         display: "flex",
         flexDirection: "column",
@@ -153,11 +148,7 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
                     </Button>
                 </Grid>
             </Grid>
-            <Box className={classes.bar}>
-                <Box className={classes.fullWidth} mr={1}>
-                    <BorderLinearProgress variant="determinate" value={100} />
-                </Box>
-            </Box>
+            <ProgressBar num={100}/>
             <CancelButton handleCancel={handleCancel}/>
             <RecipeModal open={open}/>
         </Container>
