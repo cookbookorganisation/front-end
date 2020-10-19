@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { makeStyles, Container, Typography, Button, TextField, Grid, Box, useTheme, Input, InputLabel, MenuItem, FormControl, ListItemText, Select, Checkbox, Chip } from '@material-ui/core';
+import { makeStyles, Container, Typography, Button, Grid, Box, InputLabel, MenuItem, FormControl, ListItemText, Select, Checkbox, Chip, Input } from '@material-ui/core';
 import GoHomeIcon from '../../GoHomeIcon';
 import BorderLinearProgress from '../BorderLinearProgress';
+import RecipeModal from './RecipeModal';
+import CancelButton from './CancelButton';
 
 const useStyles = makeStyles((theme) => ({
     bar: {
@@ -59,19 +61,6 @@ const useStyles = makeStyles((theme) => ({
     emoji: {
         marginLeft: "3%"
     },
-    cancelDiv: {
-        display: "flex",
-        justifyContent: "flex-end",
-    },
-    cancel: {
-        borderRadius: "2px",
-        padding: "1% 5%",
-        backgroundColor: "#f8f8ff",
-        boxShadow: "3px 3px 8px #888888",
-        "&:hover": {
-            backgroundColor: "#fcf5f5"
-        },
-    },
     formControl: {
         margin: theme.spacing(1),
         minWidth: "40%",
@@ -106,6 +95,7 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
     const history = useHistory();
     const classes = useStyles();
     const [collectionName, setCollectionName] = useState([]);
+    const [open, setOpen] = useState(false);
 
     const handleChange = (event) => {
         setCollectionName(event.target.value);
@@ -113,16 +103,11 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
 
     function handleSubmit(e) {
         e.preventDefault();
-
-        // setRecipeData({
-        //     ...recipeData,
-        //     collections: [...collectionName]
-        // }) 
-        // collectionName is an array that needs to be added to recipeData (the code above doesn't work)...
-        // ...and then sent to the redux store. 
-        // push to recipe card
-
-        console.log(recipeData)
+        setRecipeData({
+            ...recipeData,
+            collections: [...collectionName]
+        }) 
+        setOpen(true)
     };
 
     return (
@@ -181,11 +166,8 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
                     <BorderLinearProgress variant="determinate" value={100} />
                 </Box>
             </Box>
-            <div className={classes.cancelDiv}>
-                <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
-                    Cancel
-                </Button>
-            </div>
+            <CancelButton handleCancel={handleCancel}/>
+            <RecipeModal open={open}/>
         </Container>
     );
 };

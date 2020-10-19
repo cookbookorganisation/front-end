@@ -4,6 +4,7 @@ import { makeStyles, Container, Typography, Button, Grid, Avatar, Box  } from '@
 import GoHomeIcon from '../../GoHomeIcon';
 import PublishRoundedIcon from '@material-ui/icons/PublishRounded';
 import BorderLinearProgress from '../BorderLinearProgress';
+import CancelButton from './CancelButton';
 
 const useStyles = makeStyles((theme) => ({
     bar: {
@@ -70,19 +71,6 @@ const useStyles = makeStyles((theme) => ({
     button: {
         borderRadius: "2px",
         padding: "1% 15%",
-    },
-    cancelDiv: {
-        display: "flex",
-        justifyContent: "flex-end",
-    },
-    cancel: {
-        borderRadius: "2px",
-        padding: "1% 5%",
-        backgroundColor: "#f8f8ff",
-        boxShadow: "3px 3px 8px #888888",
-        "&:hover": {
-            backgroundColor: "#fcf5f5"
-        },
     },
     fullWidth: {
         width: "100%"
@@ -171,11 +159,7 @@ const UploadRecipe_photo = ({ handleCancel, setRecipeData, recipeData }) => {
                     <BorderLinearProgress variant="determinate" value={27} />
                 </Box>
             </Box>
-            <div className={classes.cancelDiv}>
-                <Button variant="outlined" color="secondary" className={classes.cancel} onClick={handleCancel}>
-                    Cancel
-                </Button>
-            </div>
+            <CancelButton handleCancel={handleCancel}/>
         </Container>
     );
 };
