@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, Container, Typography, Button, Grid, Box, InputLabel, MenuItem, FormControl, ListItemText, Select, Checkbox, Chip, Input } from '@material-ui/core';
-import GoHomeIcon from '../../GoHomeIcon';
+import Icon from '../Icon';
 import BorderLinearProgress from '../BorderLinearProgress';
 import RecipeModal from './RecipeModal';
 import CancelButton from './CancelButton';
@@ -11,12 +11,6 @@ const useStyles = makeStyles((theme) => ({
         display: "flex", 
         flexGrow: 1,
         margin: theme.spacing(3, 0)
-    },
-    icon: {
-        display: "flex", 
-        alignSelf: "flex-start", 
-        margin: theme.spacing(4, 0, 4, -2), 
-        width: "8%"
     },
     paper: {
         display: "flex",
@@ -112,9 +106,7 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
 
     return (
         <Container component="main" maxWidth="md">
-            <div onClick={handleCancel} className={classes.icon}>
-                <GoHomeIcon/>
-            </div>
+            <Icon handleCancel={handleCancel}/>
             <Grid container className={classes.paper}>
                 <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
