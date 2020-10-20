@@ -12,9 +12,6 @@ const RecipePage = ({ grabRecipe, selectedRecipe, allRecipes }) => {
         grabRecipe(id)
     }, []);
 
-    console.log("selRec in PAGE: ", selectedRecipe)
-    console.log("allRecipes in PAGE: ", allRecipes)
-    
     return (
         <div>
             <HeroNavBar/>

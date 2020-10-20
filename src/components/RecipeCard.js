@@ -1,11 +1,31 @@
 import React from 'react';
+import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
+
+
+
+const dummyData = {
+    name: "Timothy",
+    directions: "",
+    photo: "",
+    servings: "", 
+    ingredients: [],
+    temperature: "",  //optional
+    description: "",  // optional
+    tradeSecrets: "",  //optional
+    pairings: "", // optional
+    collections: [], // my recipes req, the rest is optional
+    oven: true,
+
+    firstName: "",
+    lastName: "",  // optional
+    personalPhoto: "", // optional,
+}
 
 const RecipeCard = ({ selectedRecipe }) => {
-    console.log("selectedRecipe in CARD: ", selectedRecipe)
+   
     return (
         <div>
-            hi
-            <h1>{selectedRecipe.id}</h1>
+            <h1>{dummyData.name}</h1>
         </div>
     );
 };
