@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, Button, Modal, Fade, Backdrop } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const RecipeModal = (props) => {
+const RecipeModal = ({ open, id, grabRecipe }) => {
     const history = useHistory();
     const classes = useStyles();
 
@@ -35,17 +36,17 @@ const RecipeModal = (props) => {
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
-        open={props.open}
+        open={open}
         BackdropComponent={Backdrop}
         BackdropProps={{ timeout: 500 }}>
-            <Fade in={props.open}>
+            <Fade in={open}>
                 <div className={classes.modalPaper}>
                     <h2 id="transition-modal-title">Success! Where do you want to go now?</h2>
                     <div className={classes.modalButtons}>
                         <Button variant="outlined" color="primary" className={classes.button} onClick={()=>history.push("/mycollections")}>
                             Go home
                         </Button>
-                        <Button variant="contained" color="primary" className={classes.button} onClick={()=>history.push("/")}>
+                        <Button variant="contained" color="primary" className={classes.button} onClick={()=>history.push(`/recipe/${id}`)}>
                             See recipe
                         </Button>
                     </div>

@@ -15,6 +15,8 @@ import UploadRecipe_collections from './UploadRecipe_collections';
 const UploadRecipe = () => {
     const history = useHistory();
     const [recipeData, setRecipeData] = useState({
+        // ID will be removed later
+        id: 1,
         name: "",
         directions: "",
         photo: "",
