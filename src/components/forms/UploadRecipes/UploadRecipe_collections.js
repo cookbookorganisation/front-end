@@ -5,6 +5,8 @@ import Icon from '../Icon';
 import ProgressBar from '../ProgressBar';
 import RecipeModal from './RecipeModal';
 import CancelButton from './CancelButton';
+import { connect } from "react-redux";
+import { postRecipe } from '../../actions/recipes/PostRecipe';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -80,7 +82,7 @@ const collections = [
     'Holidays',
 ];
 
-const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => {
+const UploadRecipe_collections = ({ handleCancel, recipeData, setRecipeData, postRecipe }) => {
     const history = useHistory();
     const classes = useStyles();
     const [collectionName, setCollectionName] = useState([]);
@@ -94,9 +96,10 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
         e.preventDefault();
         setRecipeData({
             ...recipeData,
-            collections: [...collectionName]
-        }) 
-        setOpen(true)
+            collections: [...collectionName, "myRecipes"]
+        });
+        postRecipe(recipeData); 
+        setOpen(true);
     };
 
     return (
@@ -150,9 +153,15 @@ const UploadRecipe_collections = ({handleCancel, recipeData, setRecipeData}) => 
             </Grid>
             <ProgressBar num={100}/>
             <CancelButton handleCancel={handleCancel}/>
-            <RecipeModal open={open}/>
+            <RecipeModal id={recipeData.id} open={open} />
         </Container>
     );
 };
 
-export default UploadRecipe_collections;
+// function mapStateToProps(state) {
+//     return {
+
+//     };
+// };
+
+export default connect(null, { postRecipe })(UploadRecipe_collections);

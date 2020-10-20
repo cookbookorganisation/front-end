@@ -8,10 +8,12 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { LoginReducer } from './components/reducers/LoginReducer';
+import { reducer } from './components/reducers/Reducer';
 
 const rootElement = document.getElementById('root');
 const rootReducer = combineReducers({
-    user: LoginReducer
+    user: LoginReducer, 
+    reducer: reducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
