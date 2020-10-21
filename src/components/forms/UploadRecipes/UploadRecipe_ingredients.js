@@ -184,7 +184,7 @@ const UploadRecipe_ingredients = ({ handleCancel, setRecipeData, recipeData }) =
                     </Button>
                 </Grid>
             </Grid>
-            <ProgressBar num={63}/>
+            <ProgressBar num={58.1}/>
             <CancelButton handleCancel={handleCancel}/>
         </Container>
     );

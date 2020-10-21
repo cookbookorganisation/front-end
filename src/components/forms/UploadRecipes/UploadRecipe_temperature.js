@@ -93,7 +93,7 @@ const UploadRecipe_temperature = ({ handleCancel, setRecipeData, recipeData }) =
                     </Button>
                 </Grid>
             </Grid>
-            <ProgressBar num={54}/>
+            <ProgressBar num={49.8}/>
             <CancelButton handleCancel={handleCancel}/>
         </Container>
     );

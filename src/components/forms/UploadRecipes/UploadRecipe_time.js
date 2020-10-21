@@ -4,7 +4,6 @@ import { makeStyles, Container, Typography, Button, TextField, Grid } from '@mat
 import Icon from '../Icon';
 import ProgressBar from '../ProgressBar';
 import CancelButton from './CancelButton';
-
 const useStyles = makeStyles((theme) => ({
     paper: {
         display: "flex",
@@ -30,90 +29,93 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 300,
         color: "#22A7F0"
     },
-    emoji: {
-        marginLeft: "3%" 
-    },
     buttons: {
         display: "flex",
         flexDirection: "row",
         alignSelf: "flex-end",
         justifyContent: "space-between",
         margin: theme.spacing(3, 0, 3, 3),
-        width: "50%"
+        width: "35%"
     },
     button: {
         borderRadius: "2px",
-        padding: "1% 15%",    
-        marginLeft: theme.spacing(2)
+        padding: "1% 15%",
     },
     fullWidth: {
-        width: "100%" 
+        width: "100%"
     },
+    emoji: {
+        marginLeft: "3%"
+    },
+    cookBakeInput: {
+        marginLeft: theme.spacing(12)
+    }
 }));
 
-const UploadRecipe_description = ({ handleCancel, setRecipeData, recipeData }) => {
+const UploadRecipe_time = ({ handleCancel, setRecipeData, recipeData }) => {
     const history = useHistory();
     const classes = useStyles();
     
-    function handleChange(e) {
+    function handlePrepChange(e) {
         e.preventDefault();
         setRecipeData({
             ...recipeData,
-            description: e.target.value 
+            prep: e.target.value 
+        })
+    };
+
+    function handleCookBakeChange(e) {
+        e.preventDefault();
+        setRecipeData({
+            ...recipeData,
+            cookBake: e.target.value 
         })
     };
 
     function handleNext(e) {
-        history.push('/uploadrecipe/photo');
+        history.push('/uploadrecipe/tradesecrets')
     };
 
-    function handleSkip(e) {
-        e.preventDefault();
-        setRecipeData({
-            ...recipeData,
-            description: ""
-        });
-        history.push('/uploadrecipe/servings');
-    }
-   
     return (
         <Container component="main" maxWidth="md">
             <Icon handleCancel={handleCancel}/>
             <Grid container className={classes.paper}>
                 <Grid item className={classes.fullWidth}>
                     <Typography component="h5" variant="h5" className={classes.header}>
-                        Tell us a bit about the recipe!
-                        <span role="img" aria-label="happy face emoji" className={classes.emoji}>😃</span>
-                    </Typography>
-                    <Typography component="h6" variant="h6" className={classes.subtitle}>
-                        How is it meaningful to you? Who taught you the recipe? Where does it come from?
+                        How long will it take to make this masterpiece?
+                        <span role="img" aria-label="time emoji" className={classes.emoji}>⏳</span>
                     </Typography>
                 </Grid>
-                <Grid item className={classes.fullWidth}>
+                <Grid item>
                     <TextField
-                    onChange={handleChange}
-                    fullWidth
-                    id="description"
-                    label="Ex: NANA WOULD MAKE THIS CAKE FOR MY BRITHDAY. SHE TAUGHT ME WHEN I WAS 10 YEARS OLD."
-                    name="name"
-                    value={recipeData.description}/>
+                    onChange={handlePrepChange}
+                    required
+                    id="prep time"
+                    label="prep time"
+                    name="prep time"
+                    value={recipeData.prep}/>
+                    <TextField
+                    className={classes.cookBakeInput}
+                    onChange={handleCookBakeChange}
+                    required
+                    id="cook/bake time"
+                    label="cook/bake time"
+                    name="cook/bake time"
+                    value={recipeData.cookBake}/>
                 </Grid>
                 <Grid item className={classes.buttons}>
                     <Button variant="outlined" color="primary" className={classes.button} onClick={()=>history.goBack()}>
                         Back
-                    </Button>
-                    <Button variant="contained" color="default" className={classes.button} onClick={handleSkip}>
-                        Skip
                     </Button>
                     <Button variant="contained" color="primary" className={classes.button} onClick={handleNext}>
                         Next
                     </Button>
                 </Grid>
             </Grid>
-            <ProgressBar num={16.6}/>
+            <ProgressBar num={74.7}/>
             <CancelButton handleCancel={handleCancel}/>
         </Container>
     );
 };
 
-export default UploadRecipe_description;
+export default UploadRecipe_time;

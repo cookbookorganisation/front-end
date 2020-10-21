@@ -85,7 +85,7 @@ const UploadRecipe_oven = ({ handleCancel, setRecipeData, recipeData }) => {
                     </Button>
                 </Grid>
             </Grid>
-            <ProgressBar num={45}/>
+            <ProgressBar num={41.5}/>
             <CancelButton handleCancel={handleCancel}/>
         </Container>
     );

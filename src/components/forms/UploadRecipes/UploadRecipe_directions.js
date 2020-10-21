@@ -63,7 +63,7 @@ const UploadRecipe_directions = ({ handleCancel, setRecipeData, recipeData }) =>
     };
 
     function handleNext(e) {
-        history.push('/uploadrecipe/tradesecrets')
+        history.push('/uploadrecipe/time')
     };
 
     return (
@@ -99,7 +99,7 @@ const UploadRecipe_directions = ({ handleCancel, setRecipeData, recipeData }) =>
                     </Button>
                 </Grid>
             </Grid>
-            <ProgressBar num={72}/>
+            <ProgressBar num={66.4}/>
             <CancelButton handleCancel={handleCancel}/>
         </Container>
     );
