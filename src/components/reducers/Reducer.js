@@ -27,6 +27,7 @@ export const reducer = (state = initialState, action) => {
                     myRecipes: [...state.myCollections.myRecipes, action.payload]
                     // NOTE : This doesn't currently have logic that puts the recipe in the any collection beside MY RECIPES
                 },
+                selectedRecipe: action.payload
             };
         case GRAB_RECIPE_SUCCESS:
             let newArray = state.allRecipes.filter(recipe => recipe !== action.payload)

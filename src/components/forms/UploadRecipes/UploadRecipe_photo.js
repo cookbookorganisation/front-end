@@ -141,7 +141,7 @@ const UploadRecipe_photo = ({ handleCancel, setRecipeData, recipeData }) => {
                     </Button>
                 </Grid>
             </Grid>
-            <ProgressBar num={27}/>
+            <ProgressBar num={24.9}/>
             <CancelButton handleCancel={handleCancel}/>
         </Container>
     );

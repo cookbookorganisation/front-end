@@ -1,10 +1,8 @@
 import React from 'react';
 import { makeStyles, Container, Typography, Button, TextField, Grid } from '@material-ui/core';
 
-
-
 const dummyData = {
-    name: "Timothy",
+    name: "Sourdough Blueberry Muffins",
     directions: "",
     photo: "",
     servings: "", 

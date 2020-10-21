@@ -111,7 +111,7 @@ const UploadRecipe_tradeSecrets = ({ handleCancel, setRecipeData, recipeData }) 
                     </Button>
                 </Grid>
             </Grid>
-            <ProgressBar num={81}/>
+            <ProgressBar num={83}/>
             <CancelButton handleCancel={handleCancel}/>
         </Container>
     );

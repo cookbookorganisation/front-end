@@ -11,14 +11,15 @@ import UploadRecipe_temperature from './UploadRecipe_temperature';
 import UploadRecipe_tradeSecrets from './UploadRecipe_tradeSecrets';
 import UploadRecipe_oven from './UploadRecipe_oven';
 import UploadRecipe_collections from './UploadRecipe_collections';
+import UploadRecipe_time from './UploadRecipe_time';
 
 const UploadRecipe = () => {
     const history = useHistory();
     const [recipeData, setRecipeData] = useState({
-        // ID will be removed later
-        id: 1,
         name: "",
         directions: "",
+        prep: "",
+        cookBake: "",
         photo: "",
         oven: false,
         temperature: "",
@@ -35,6 +36,8 @@ const UploadRecipe = () => {
         setRecipeData({
             name: "",
             directions: "",
+            prep: "",
+            cookBake: "",
             photo: "",
             oven: false,
             temperature: "",
@@ -112,6 +115,12 @@ const UploadRecipe = () => {
             path: "/uploadrecipe/collections",
             component: UploadRecipe_collections,
             key: "collections",
+            uniqueProps: [handleCancel, recipeData, setRecipeData]
+        },
+        {
+            path: "/uploadrecipe/time",
+            component: UploadRecipe_time,
+            key: "time",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         }
     ]

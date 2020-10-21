@@ -110,7 +110,7 @@ const UploadRecipe_pairings = ({ handleCancel, setRecipeData, recipeData }) => {
                     </Button>
                 </Grid>
             </Grid>
-            <ProgressBar num={90}/>
+            <ProgressBar num={91.3}/>
             <CancelButton handleCancel={handleCancel}/>
         </Container>
     );
