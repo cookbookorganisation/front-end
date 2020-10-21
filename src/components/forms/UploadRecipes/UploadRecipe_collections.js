@@ -96,7 +96,7 @@ const UploadRecipe_collections = ({ handleCancel, recipeData, setRecipeData, pos
         e.preventDefault();
         setRecipeData({
             ...recipeData,
-            collections: [...collectionName, "myRecipes"]
+            collections: [...collectionName]
         });
         postRecipe(recipeData); 
         setOpen(true);
@@ -153,15 +153,9 @@ const UploadRecipe_collections = ({ handleCancel, recipeData, setRecipeData, pos
             </Grid>
             <ProgressBar num={100}/>
             <CancelButton handleCancel={handleCancel}/>
-            <RecipeModal id={recipeData.id} open={open} />
+            <RecipeModal open={open} />
         </Container>
     );
 };
-
-// function mapStateToProps(state) {
-//     return {
-
-//     };
-// };
 
 export default connect(null, { postRecipe })(UploadRecipe_collections);

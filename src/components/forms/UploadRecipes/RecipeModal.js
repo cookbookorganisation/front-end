@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles, Button, Modal, Fade, Backdrop } from '@material-ui/core';
-
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const RecipeModal = ({ open, id, grabRecipe }) => {
+const RecipeModal = ({ open, grabRecipe, selectedRecipe }) => {
     const history = useHistory();
     const classes = useStyles();
 
@@ -46,7 +46,7 @@ const RecipeModal = ({ open, id, grabRecipe }) => {
                         <Button variant="outlined" color="primary" className={classes.button} onClick={()=>history.push("/mycollections")}>
                             Go home
                         </Button>
-                        <Button variant="contained" color="primary" className={classes.button} onClick={()=>history.push(`/recipe/${id}`)}>
+                        <Button variant="contained" color="primary" className={classes.button} onClick={()=>history.push(`/recipe/${selectedRecipe.id}`)}>
                             See recipe
                         </Button>
                     </div>
@@ -56,4 +56,10 @@ const RecipeModal = ({ open, id, grabRecipe }) => {
     );
 };
 
-export default RecipeModal;
+function mapStateToProps(state) {
+    return {
+        selectedRecipe: state.reducer.selectedRecipe,
+    };
+};
+
+export default connect(mapStateToProps, { })(RecipeModal);

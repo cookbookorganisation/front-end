@@ -1,13 +1,13 @@
-import React, { useEffect }  from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import HeroNavBar from './navbars/HeroNavBar';
 import RecipeCard from './RecipeCard';
 import { connect } from 'react-redux';
 import { grabRecipe } from './actions/recipes/GrabRecipe';
 
-const RecipePage = ({ grabRecipe, selectedRecipe, allRecipes }) => {
+const RecipePage = ({ selectedRecipe }) => {
     const { id } = useParams();
-
+    
     useEffect(() => {
         grabRecipe(id)
     }, []);
@@ -21,10 +21,8 @@ const RecipePage = ({ grabRecipe, selectedRecipe, allRecipes }) => {
 };
 
 function mapStateToProps(state) {
-    console.log("state: ", state.reducer)
     return {
         selectedRecipe: state.reducer.selectedRecipe,
-        allRecipes: state.reducer.allRecipes
     };
 };
 
