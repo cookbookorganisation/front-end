@@ -33,7 +33,7 @@ const HeroNavBar = () => {
     };
 
     return (
-        <Container component="main" maxWidth="lg" className={classes.container}>
+        <Container component="main" maxWidth="xl" className={classes.container}>
             <CssBaseline/>
             <Grid container  alignItems="center">
                 <Grid 

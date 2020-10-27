@@ -123,21 +123,14 @@ const UploadRecipe = () => {
             key: "time",
             uniqueProps: [handleCancel, recipeData, setRecipeData]
         }
-    ]
+    ];
     
     return (
         <div className="formBackground">
             <Switch>
                 {routes.map(({ path, key, component: C, ...uniqueProps }) => (
-                    <Route 
-                        path={path}
-                        key={key}
-                        render={(props) => 
-                            <C 
-                                {...props} 
-                                handleCancel={handleCancel} 
-                                recipeData={recipeData} 
-                                setRecipeData={setRecipeData}/>}/>
+                    <Route path={path} key={key} render={(props) => 
+                            <C {...props} handleCancel={handleCancel} recipeData={recipeData} setRecipeData={setRecipeData}/>}/>
                 ))}
             </Switch>
         </div>
